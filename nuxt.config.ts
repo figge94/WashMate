@@ -20,5 +20,11 @@ export default defineNuxtConfig({
         { name: "description", content: "Smart tvättguide för din tvättmaskin" }
       ]
     }
-  }
+  },
+  components: [
+    {
+      path: "~/components",
+      pathPrefix: false
+    }
+  ]
 });

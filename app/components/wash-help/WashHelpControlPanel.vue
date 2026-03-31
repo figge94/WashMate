@@ -37,10 +37,19 @@
 
           <div
             class="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 dark:bg-slate-800">
-            <img
-              :src="symbols[item.symbolKey]"
-              :alt="item.namn"
-              class="h-5 w-5 object-contain" />
+            <div
+              class="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 dark:bg-slate-800">
+              <img
+                v-if="symbols[item.symbolKey].startsWith('/')"
+                :src="symbols[item.symbolKey]"
+                :alt="item.namn"
+                class="h-5 w-5 object-contain" />
+
+              <div
+                v-else
+                class="h-6 w-6 text-slate-900 dark:text-slate-100"
+                v-html="symbols[item.symbolKey]" />
+            </div>
           </div>
 
           <div>
