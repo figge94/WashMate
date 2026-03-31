@@ -1,26 +1,9 @@
-export type ProgramFunktionKey =
-  | "centrifugering"
-  | "flackborttagning"
-  | "fortvatt"
-  | "extraSkoljning"
-  | "fordrojdStart"
-  | "timeManager"
-  | "softPlus";
-
-export type ProgramFunktion = {
-  namn: string;
-  beskrivning: string;
-};
-
-export type Program = {
-  namn: string;
-  temperatur: string;
-  maxCentrifugering: string;
-  maxMangd: string;
-  beskrivning: string;
-  funktioner: ProgramFunktionKey[];
-  symboler?: string[];
-};
+import type {
+  Machine,
+  Program,
+  ProgramFunktion,
+  ProgramFunktionKey
+} from "~/types/machine";
 
 export function useMachine() {
   const programfunktioner: Record<ProgramFunktionKey, ProgramFunktion> = {
@@ -235,7 +218,7 @@ export function useMachine() {
     }
   ];
 
-  const machine = {
+  const machine: Machine = {
     manualUrl:
       "https://api.electrolux-medialibrary.com/asset/08d47a73-e6f4-42da-a89b-4c6747445aad/E4RM3Q/0605c4e2-eab3-4022-a52a-73da6f646764/PDF/0605c4e2-eab3-4022-a52a-73da6f646764.pdf",
 
@@ -248,7 +231,6 @@ export function useMachine() {
       kapacitetKg: 7,
       maxCentrifugering: 1151,
       energiklass: "A+++",
-      ljudnivaDb: 78,
 
       dimensioner: {
         breddCm: 60.0,
