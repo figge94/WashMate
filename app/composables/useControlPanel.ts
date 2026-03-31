@@ -1,18 +1,4 @@
-import type { ControlSymbolKey } from "~/composables/useControlSymbols";
-
-export type Knapp = {
-  id: number;
-  symbolKey: ControlSymbolKey;
-  namn: string;
-  beskrivning: string;
-  nar: string;
-};
-
-export type Indikator = {
-  symbolKey: ControlSymbolKey;
-  namn: string;
-  beskrivning: string;
-};
+import type { Indikator, Knapp } from "~/types/control-panel";
 
 export function useControlPanel() {
   const knappar: Knapp[] = [

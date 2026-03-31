@@ -87,8 +87,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Knapp, Indikator } from "~/composables/useControlPanel";
-import type { ControlSymbolKey } from "~/composables/useControlSymbols";
+import type { Indikator, Knapp } from "~/types/control-panel";
+import type { ControlSymbolKey } from "~/types/control-symbol";
 
 defineProps<{
   knappar: Knapp[];

@@ -37,7 +37,7 @@ import { useMachine } from "~/composables/useMachine";
 import { useControlPanel } from "~/composables/useControlPanel";
 import { useControlSymbols } from "~/composables/useControlSymbols";
 import { useWashChoices } from "~/composables/useWashChoices";
-import type { Knapp } from "~/composables/useControlPanel";
+import type { Knapp } from "~/types/control-panel";
 
 const { machine } = useMachine();
 const { choices } = useWashChoices();
@@ -60,12 +60,11 @@ const selectedChoice = computed(
 );
 
 const selectedProgram = computed(() => {
-  if (!selectedChoice.value) return null;
+  const programName = selectedChoice.value?.program;
+  if (!programName) return null;
 
   return (
-    machine.program.find(
-      (program) => program.namn === selectedChoice.program
-    ) ?? null
+    machine.program.find((program) => program.namn === programName) ?? null
   );
 });
 

@@ -1,17 +1,4 @@
-export type ControlSymbolKey =
-  | "programvred"
-  | "centrifugering"
-  | "temperatur"
-  | "fortvatt"
-  | "fordrojdStart"
-  | "extraSkoljning"
-  | "quick"
-  | "startPaus"
-  | "lucklas"
-  | "programKlart"
-  | "barnlas"
-  | "skoljstopp"
-  | "ingenCentrifugering";
+import type { ControlSymbolKey } from "~/types/control-symbol";
 
 export function useControlSymbols() {
   const symbols: Record<ControlSymbolKey, string> = {
