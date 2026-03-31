@@ -1,5 +1,7 @@
+import type { WashChoice } from "~/types/wash-choice";
+
 export const useWashChoices = () => {
-  const choices = [
+  const choices: readonly WashChoice[] = [
     {
       id: "vardag",
       title: "Vardagstvätt",
