@@ -35,14 +35,14 @@ export function useControlPanel() {
       symbolKey: "fordrojdStart",
       namn: "Fördröjd start",
       beskrivning: "Gör att tvättprogrammet startar senare.",
-      nar: "Bra om du vill att tvätten ska vara klar en viss tid eller gå senare på dagen."
+      nar: "Bra om du vill att tvätten ska vara klar en viss tid eller gå senare på dagen. Med den här funktionen kan du fördröja starten av ett program med 9, 6 eller 3 timmar. Indikatorn för funktionen och inställt värde lyser."
     },
     {
       id: 6,
       symbolKey: "extraSkoljning",
       namn: "Extra sköljning",
       beskrivning: "Lägger till extra sköljning i programmet.",
-      nar: "Bra om du vill få bort mer tvättmedel, till exempel för känslig hud."
+      nar: "Denna funktion lägger till några sköljningar enligt valt tvättprogram. Använd den här funktionen om du har allergi mot tvättmedelsrester eller extra känslig hud. (Funktionen lägger till tid till programlängden.)"
     },
     {
       id: 7,

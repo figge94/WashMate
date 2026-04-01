@@ -30,10 +30,7 @@
           type="button"
           @click="$emit('open', item)"
           class="group relative flex min-h-6 flex-col items-start gap-3 rounded-3xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
-          <span
-            class="absolute right-3 top-3 grid h-7 w-7 place-items-center rounded-full bg-slate-900 text-xs font-semibold text-white dark:bg-slate-100 dark:text-slate-900">
-            {{ item.id }}
-          </span>
+          
 
           <div
             class="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 dark:bg-slate-800">
@@ -48,8 +45,10 @@
               <div
                 v-else
                 class="h-6 w-6 text-slate-900 dark:text-slate-100"
-                v-html="symbols[item.symbolKey]" />
+                v-html="symbols[item.symbolKey]"
+                :src="symbols[item.symbolKey]" ></div>
             </div>
+            
           </div>
 
           <div>
