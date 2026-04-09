@@ -11,7 +11,7 @@
       </p>
     </div>
 
-    <ProgramMetaChips :program="program" />
+    <ProgramMetaChips :program="program" :machine-type="machineType" />
 
     <ProgramFunctionChips
       v-if="program.funktioner?.length"
@@ -28,6 +28,7 @@
 
 <script setup lang="ts">
 import type {
+  MachineType,
   Program,
   ProgramFunktion,
   ProgramFunktionKey
@@ -35,6 +36,7 @@ import type {
 
 defineProps<{
   program: Program;
+  machineType: MachineType;
   programfunktioner: Partial<Record<ProgramFunktionKey, ProgramFunktion>>;
 }>();
 </script>

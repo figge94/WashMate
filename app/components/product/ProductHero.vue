@@ -7,19 +7,32 @@
     </p>
 
     <h1 class="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-      {{ produkt.marke }} {{ produkt.modell }}
+      {{ title }}
     </h1>
 
     <p class="mt-4 text-base leading-7 text-slate-600 dark:text-slate-300">
-      Här hittar du teknisk information och specifikationer för din tvättmaskin.
+      Här hittar du teknisk information och specifikationer för din
+      {{ productTypeText }}.
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import type { Produkt } from "~/types/machine";
 
-defineProps<{
-  produkt: Pick<Produkt, "marke" | "modell">;
+const props = defineProps<{
+  produkt: Partial<Pick<Produkt, "marke" | "modell">>;
 }>();
+
+const { productTypeText } = useProductType();
+
+const title = computed(() => {
+  const { marke, modell } = props.produkt;
+
+  if (marke && modell) return `${marke} ${modell}`;
+  if (marke) return marke;
+  if (modell) return modell;
+  return "Produkt";
+});
 </script>

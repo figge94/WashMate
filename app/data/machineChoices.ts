@@ -105,7 +105,7 @@ export const dryerChoices: readonly WashChoice[] = [
     id: "skjortor",
     title: "Skjortor och lättare plagg",
     text: "Plagg som gärna får vara lite lätt fuktiga efteråt.",
-    program: "Stryktorrt",
+    program: "Iron Dry",
     reason: "Bra val om plaggen ska strykas eller inte ska bli helt torra.",
     tips: [
       "Bra för skjortor.",

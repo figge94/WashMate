@@ -7,11 +7,11 @@ export const dryer: Machine = {
     "https://static.elongroup.se/Document/Article/226773/manual-torktumlare-electrolux-916098576.pdf",
   produkt: {
     namn: "Torktumlare",
-    modell: "",
+    modell: "EW2H328R2",
     marke: "Electrolux",
-    pnc: "",
-    kapacitetKg: 0,
-    energiklass: "",
+    pnc: "916098576",
+    kapacitetKg: 8,
+    energiklass: "A+",
     dimensioner: {
       breddCm: 0,
       hojdCm: 0,
@@ -19,7 +19,7 @@ export const dryer: Machine = {
     },
     el: {
       spanningV: 230,
-      effektW: 0,
+      effektW: 900,
       sakringA: 10,
       frekvensHz: 50
     },
@@ -32,7 +32,8 @@ export const dryer: Machine = {
     vilolagetsVaraktighetMinuter: 0,
     inbyggdMaskin: false,
     standardprogram: [],
-    kommentar: ""
+    kommentar: "",
+    ljudnivaTvattDb: 67
   },
   programfunktioner: {},
   program: [],

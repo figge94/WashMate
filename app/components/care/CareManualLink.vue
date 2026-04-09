@@ -6,7 +6,7 @@
       target="_blank"
       rel="noopener noreferrer"
       class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200">
-      Öppna manualen
+      Öppna manualen (PDF)
     </a>
   </div>
 </template>

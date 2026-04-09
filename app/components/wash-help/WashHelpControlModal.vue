@@ -11,9 +11,18 @@
             <div
               class="grid h-12 w-12 place-items-center rounded-xl bg-slate-100 dark:bg-slate-800">
               <img
+                v-if="
+                  symbols[selectedPanelItem.symbolKey] &&
+                  symbols[selectedPanelItem.symbolKey].startsWith('/')
+                "
                 :src="symbols[selectedPanelItem.symbolKey]"
                 :alt="selectedPanelItem.namn"
                 class="h-6 w-6 object-contain" />
+
+              <div
+                v-else-if="symbols[selectedPanelItem.symbolKey]"
+                class="h-6 w-6 text-slate-900 dark:text-slate-100"
+                v-html="symbols[selectedPanelItem.symbolKey]"></div>
             </div>
 
             <div>

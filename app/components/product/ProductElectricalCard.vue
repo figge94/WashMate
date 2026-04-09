@@ -1,41 +1,23 @@
 <template>
-  <div
-    class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-    <h2 class="text-lg font-semibold tracking-tight">El</h2>
-
-    <div class="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-      <p>
-        <span class="font-medium text-slate-900 dark:text-slate-100">
-          Spänning:
-        </span>
-        {{ el.spanningV }} V
-      </p>
-      <p>
-        <span class="font-medium text-slate-900 dark:text-slate-100">
-          Effekt:
-        </span>
-        {{ el.effektW }} W
-      </p>
-      <p>
-        <span class="font-medium text-slate-900 dark:text-slate-100">
-          Säkring:
-        </span>
-        {{ el.sakringA }} A
-      </p>
-      <p>
-        <span class="font-medium text-slate-900 dark:text-slate-100">
-          Frekvens:
-        </span>
-        {{ el.frekvensHz }} Hz
-      </p>
-    </div>
-  </div>
+  <ProductSpecsCard title="El" :items="specItems" :columns="2" />
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import type { ProduktEl } from "~/types/machine";
+import { useSpecsBuilder } from "~/composables/useSpecsBuilder";
+import { spec } from "~/utils/spec";
 
-defineProps<{
-  el: ProduktEl;
+const props = defineProps<{
+  el: Partial<ProduktEl>;
 }>();
+
+const items = computed(() => [
+  spec("spanning", "Spänning", props.el.spanningV, "V"),
+  spec("effekt", "Effekt", props.el.effektW, "W"),
+  spec("sakring", "Säkring", props.el.sakringA, "A"),
+  spec("frekvens", "Frekvens", props.el.frekvensHz, "Hz")
+]);
+
+const { specItems } = useSpecsBuilder(items);
 </script>

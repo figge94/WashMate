@@ -1,36 +1,36 @@
 <template>
-  <div
-    class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-    <h2 class="text-lg font-semibold tracking-tight">Prestanda</h2>
-
-    <div class="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-      <p>
-        <span class="font-medium text-slate-900 dark:text-slate-100">
-          Max centrifugering:
-        </span>
-        {{ produkt.maxCentrifugering }} varv/min
-      </p>
-      <p>
-        <span class="font-medium text-slate-900 dark:text-slate-100">
-          Energiklass:
-        </span>
-        {{ produkt.energiklass }}
-      </p>
-      <p>
-        <span class="font-medium text-slate-900 dark:text-slate-100">
-          Ljudnivå:
-        </span>
-        {{ energidata.ljudnivaCentrifugeringDb }} dB
-      </p>
-    </div>
-  </div>
+  <ProductSpecsCard title="Prestanda" :items="specItems" :columns="2" />
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import type { Energidata, Produkt } from "~/types/machine";
+import { useSpecsBuilder } from "~/composables/useSpecsBuilder";
+import { spec } from "~/utils/spec";
 
-defineProps<{
-  produkt: Pick<Produkt, "maxCentrifugering" | "energiklass">;
-  energidata: Pick<Energidata, "ljudnivaCentrifugeringDb">;
+const { isWasher } = useProductType();
+
+const props = defineProps<{
+  produkt: Partial<Pick<Produkt, "maxCentrifugering" | "energiklass">>;
+  energidata: Partial<Pick<Energidata, "ljudnivaCentrifugeringDb">>;
 }>();
+
+const items = computed(() => [
+  spec(
+    "centrifugering",
+    "Max centrifugering",
+    props.produkt.maxCentrifugering,
+    "varv/min",
+    isWasher.value
+  ),
+  spec("energiklass", "Energiklass", props.produkt.energiklass),
+  spec(
+    "ljud",
+    isWasher.value ? "Ljud centrifugering" : "Ljudnivå",
+    props.energidata.ljudnivaCentrifugeringDb,
+    "dB"
+  )
+]);
+
+const { specItems } = useSpecsBuilder(items);
 </script>

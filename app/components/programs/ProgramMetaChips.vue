@@ -7,7 +7,11 @@
     </span>
 
     <span
-      v-if="program.maxCentrifugering && program.maxCentrifugering !== '-'"
+      v-if="
+        machineType === 'washer' &&
+        program.maxCentrifugering &&
+        program.maxCentrifugering !== '-'
+      "
       class="inline-flex rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-200">
       Centrifugering: {{ program.maxCentrifugering }}
     </span>
@@ -21,9 +25,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Program } from "~/types/machine";
+import type { MachineType, Program } from "~/types/machine";
 
 defineProps<{
   program: Program;
+  machineType: MachineType;
 }>();
 </script>

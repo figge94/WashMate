@@ -4,7 +4,7 @@
     <div
       class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
       <NuxtLink
-        to="/"
+        :to="{ path: '/', query: { id: machine?.id } }"
         class="text-lg font-semibold tracking-tight text-slate-900 dark:text-slate-100"
         @click="closeMobileMenu">
         WashMate
@@ -66,6 +66,9 @@
 import { ref } from "vue";
 import { useNavigation } from "~/composables/useNavigation";
 import { useTheme } from "~/composables/useTheme";
+import { useSelectedMachine } from "~/composables/useSelectedMachine";
+
+const { machine } = useSelectedMachine();
 
 const { links } = useNavigation();
 const { isDark, toggleDark } = useTheme();

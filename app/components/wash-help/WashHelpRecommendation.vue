@@ -24,6 +24,7 @@
 
       <span
         v-if="
+          machineType === 'washer' &&
           selectedProgram.maxCentrifugering &&
           selectedProgram.maxCentrifugering !== '-'
         "
@@ -34,7 +35,7 @@
       <span
         v-if="selectedProgram.maxMangd && selectedProgram.maxMangd !== '-'"
         class="inline-flex rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-200">
-        Max mängd: {{ selectedProgram.maxMangd }}
+        {{ amountLabel }}: {{ selectedProgram.maxMangd }}
       </span>
     </div>
 
@@ -59,11 +60,17 @@
 </template>
 
 <script setup lang="ts">
-import type { Program } from "~/types/machine";
+import { computed } from "vue";
+import type { MachineType, Program } from "~/types/machine";
 import type { WashChoice } from "~/types/wash-choice";
 
-defineProps<{
+const props = defineProps<{
+  machineType: MachineType;
   selectedChoice: WashChoice;
   selectedProgram: Program | null;
 }>();
+
+const amountLabel = computed(() =>
+  props.machineType === "dryer" ? "Max mängd" : "Max mängd"
+);
 </script>

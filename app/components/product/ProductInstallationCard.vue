@@ -1,45 +1,38 @@
 <template>
-  <div
-    class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-    <h2 class="text-lg font-semibold tracking-tight">Installation</h2>
-
-    <div class="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-      <template v-if="vatten">
-        <p>
-          <span class="font-medium text-slate-900 dark:text-slate-100">
-            Vatten:
-          </span>
-          {{ vatten.inlopp }}
-        </p>
-        <p>
-          <span class="font-medium text-slate-900 dark:text-slate-100">
-            Min tryck:
-          </span>
-          {{ vatten.minTryckBar }} bar
-        </p>
-        <p>
-          <span class="font-medium text-slate-900 dark:text-slate-100">
-            Max tryck:
-          </span>
-          {{ vatten.maxTryckBar }} bar
-        </p>
-      </template>
-
-      <p>
-        <span class="font-medium text-slate-900 dark:text-slate-100">
-          IP-klass:
-        </span>
-        {{ kapslingsklass }}
-      </p>
-    </div>
-  </div>
+  <ProductSpecsCard title="Installation" :items="specItems" :columns="2" />
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import type { ProduktVatten } from "~/types/machine";
+import { useSpecsBuilder } from "~/composables/useSpecsBuilder";
+import { spec } from "@/utils/spec";
 
-defineProps<{
-  vatten?: ProduktVatten;
-  kapslingsklass: string;
+const { isWasher } = useProductType();
+
+const props = defineProps<{
+  vatten?: Partial<ProduktVatten>;
+  kapslingsklass?: string;
 }>();
+
+const items = computed(() => [
+  spec("vatten", "Vatten", props.vatten?.inlopp, undefined, isWasher.value),
+  spec(
+    "minTryck",
+    "Minsta tryck",
+    props.vatten?.minTryckBar,
+    "bar",
+    isWasher.value
+  ),
+  spec(
+    "maxTryck",
+    "Högsta tryck",
+    props.vatten?.maxTryckBar,
+    "bar",
+    isWasher.value
+  ),
+  spec("ip", "IP-klass", props.kapslingsklass)
+]);
+
+const { specItems } = useSpecsBuilder(items);
 </script>

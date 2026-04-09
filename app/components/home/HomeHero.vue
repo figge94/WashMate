@@ -7,24 +7,24 @@
     </p>
 
     <h1 class="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-      Tvättguide
+      {{ produkt.namn }}
     </h1>
 
     <p
       class="mt-4 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
       Enkel guide för program, produktinformation, skötsel och felsökning för
-      vår tvättmaskin.
+      vald maskin.
     </p>
 
     <div class="mt-8 flex flex-col gap-3 sm:flex-row">
       <NuxtLink
-        to="/tvatthjalp"
+        :to="{ path: '/tvatthjalp', query: { id: machineId } }"
         class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200">
-        Öppna tvätthjälp
+        Öppna maskinhjälp
       </NuxtLink>
 
       <NuxtLink
-        to="/program"
+        :to="{ path: '/program', query: { id: machineId } }"
         class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800">
         Se program
       </NuxtLink>
@@ -36,6 +36,7 @@
 import type { Produkt } from "~/types/machine";
 
 defineProps<{
-  produkt: Pick<Produkt, "marke" | "modell">;
+  produkt: Pick<Produkt, "marke" | "modell" | "namn">;
+  machineId: string;
 }>();
 </script>

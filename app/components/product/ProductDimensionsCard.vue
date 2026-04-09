@@ -1,52 +1,23 @@
 <template>
-  <div
-    class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-    <h2 class="text-lg font-semibold tracking-tight">Mått</h2>
-
-    <div class="mt-6 grid gap-4 sm:grid-cols-4">
-      <div class="rounded-xl bg-slate-50 p-4 text-center dark:bg-slate-800/60">
-        <p
-          class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
-          Bredd
-        </p>
-        <p class="mt-2 text-lg font-semibold">{{ dimensioner.breddCm }} cm</p>
-      </div>
-
-      <div class="rounded-xl bg-slate-50 p-4 text-center dark:bg-slate-800/60">
-        <p
-          class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
-          Höjd
-        </p>
-        <p class="mt-2 text-lg font-semibold">{{ dimensioner.hojdCm }} cm</p>
-      </div>
-
-      <div class="rounded-xl bg-slate-50 p-4 text-center dark:bg-slate-800/60">
-        <p
-          class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
-          Djup
-        </p>
-        <p class="mt-2 text-lg font-semibold">{{ dimensioner.djupCm }} cm</p>
-      </div>
-
-      <div
-        v-if="dimensioner.totalDjupCm"
-        class="rounded-xl bg-slate-50 p-4 text-center dark:bg-slate-800/60">
-        <p
-          class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
-          Totalt djup
-        </p>
-        <p class="mt-2 text-lg font-semibold">
-          {{ dimensioner.totalDjupCm }} cm
-        </p>
-      </div>
-    </div>
-  </div>
+  <ProductSpecsCard title="Mått" :items="specItems" :columns="4" />
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import type { ProduktDimensioner } from "~/types/machine";
+import { useSpecsBuilder } from "~/composables/useSpecsBuilder";
+import { spec } from "~/utils/spec";
 
-defineProps<{
-  dimensioner: ProduktDimensioner;
+const props = defineProps<{
+  dimensioner: Partial<ProduktDimensioner>;
 }>();
+
+const items = computed(() => [
+  spec("bredd", "Bredd", props.dimensioner.breddCm, "cm"),
+  spec("hojd", "Höjd", props.dimensioner.hojdCm, "cm"),
+  spec("djup", "Djup", props.dimensioner.djupCm, "cm"),
+  spec("totalDjup", "Totalt djup", props.dimensioner.totalDjupCm, "cm")
+]);
+
+const { specItems } = useSpecsBuilder(items);
 </script>

@@ -4,8 +4,9 @@
       v-for="choice in choices"
       :key="choice.id"
       type="button"
+      :aria-pressed="selected === choice.id"
       @click="$emit('select', choice.id)"
-      class="rounded-3xl border p-5 text-left transition hover:-translate-y-0.5 hover:shadow-md"
+      class="rounded-3xl border p-5 text-left transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-slate-400"
       :class="
         selected === choice.id
           ? 'border-slate-900 bg-slate-900 text-white shadow-sm dark:border-slate-100 dark:bg-slate-100 dark:text-slate-900'

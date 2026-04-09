@@ -1,7 +1,7 @@
 <template>
   <div
     class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-    <div class="space-y-3">
+    <div v-if="skotsel.length" class="space-y-3">
       <details
         v-for="item in skotsel"
         :key="item.titel"
@@ -30,6 +30,10 @@
         </ul>
       </details>
     </div>
+
+    <p v-else class="text-sm text-slate-600 dark:text-slate-300">
+      Ingen skötselinformation finns ännu för den här maskinen.
+    </p>
   </div>
 </template>
 

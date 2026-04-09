@@ -4,13 +4,14 @@
     <section class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       <MachineSwitcher />
 
-      <ProgramsHero />
+      <ProgramsHero v-if="machine" :machine-type="machine.type" />
 
       <div v-if="machine" class="mt-6 grid gap-4 lg:grid-cols-2">
         <ProgramCard
           v-for="item in machine.program"
           :key="item.namn"
           :program="item"
+          :machine-type="machine.type"
           :programfunktioner="machine.programfunktioner" />
       </div>
     </section>

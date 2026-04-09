@@ -1,7 +1,7 @@
 <template>
   <main
     class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-    <section class="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
+    <section class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       <MachineSwitcher />
       <div
         class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-10">

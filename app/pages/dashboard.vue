@@ -4,9 +4,16 @@
     <section class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       <MachineSwitcher />
 
-      <HomeHero v-if="machine" :produkt="machine.produkt" />
-      <HomeQuickLinks class="mt-6" />
-      <HomeCarePreview v-if="machine" class="mt-6" :skotsel="machine.skotsel" />
+      <HomeHero
+        v-if="machine"
+        :produkt="machine.produkt"
+        :machine-id="machine.id" />
+      <HomeQuickLinks v-if="machine" class="mt-6" :machine-id="machine.id" />
+      <HomeCarePreview
+        v-if="machine"
+        class="mt-6"
+        :skotsel="machine.skotsel"
+        :machine-id="machine.id" />
     </section>
   </main>
 </template>

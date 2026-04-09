@@ -12,8 +12,20 @@
 
     <p
       class="mt-4 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
-      Här är de viktigaste råden för att hålla tvättmaskinen fräsch och
-      fungerande.
+      Här är de viktigaste råden för att hålla {{ label }} fräsch och fungerande.
     </p>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import type { MachineType } from "~/types/machine";
+
+const props = defineProps<{
+  machineType: MachineType;
+}>();
+
+const label = computed(() =>
+  props.machineType === "dryer" ? "torktumlaren" : "tvättmaskinen"
+);
+</script>

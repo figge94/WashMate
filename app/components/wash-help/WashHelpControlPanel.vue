@@ -30,25 +30,18 @@
           type="button"
           @click="$emit('open', item)"
           class="group relative flex min-h-6 flex-col items-start gap-3 rounded-3xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
-          
-
           <div
             class="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 dark:bg-slate-800">
-            <div
-              class="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 dark:bg-slate-800">
-              <img
-                v-if="symbols[item.symbolKey].startsWith('/')"
-                :src="symbols[item.symbolKey]"
-                :alt="item.namn"
-                class="h-5 w-5 object-contain" />
+            <img
+              v-if="symbols[item.symbolKey].startsWith('/')"
+              :src="symbols[item.symbolKey]"
+              :alt="item.namn"
+              class="h-5 w-5 object-contain" />
 
-              <div
-                v-else
-                class="h-6 w-6 text-slate-900 dark:text-slate-100"
-                v-html="symbols[item.symbolKey]"
-                :src="symbols[item.symbolKey]" ></div>
-            </div>
-            
+            <div
+              v-else
+              class="h-6 w-6 text-slate-900 dark:text-slate-100"
+              v-html="symbols[item.symbolKey]"></div>
           </div>
 
           <div>
@@ -77,9 +70,15 @@
           <div
             class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-slate-100 dark:bg-slate-800">
             <img
+              v-if="symbols[item.symbolKey].startsWith('/')"
               :src="symbols[item.symbolKey]"
               :alt="item.namn"
               class="h-5 w-5 object-contain" />
+
+            <div
+              v-else
+              class="h-6 w-6 text-slate-900 dark:text-slate-100"
+              v-html="symbols[item.symbolKey]"></div>
           </div>
 
           <div>
@@ -95,16 +94,27 @@
 </template>
 
 <script setup lang="ts">
-import type { Indikator, Knapp } from "~/types/control-panel";
-import type { ControlSymbolKey } from "~/types/control-symbol";
+import { computed, ref } from "vue";
+import { useSelectedMachine } from "~/composables/useSelectedMachine";
+import { useControlPanel } from "~/composables/useControlPanel";
+import { useControlSymbols } from "~/composables/useControlSymbols";
+import type { Knapp } from "~/types/control-panel";
 
-defineProps<{
-  knappar: Knapp[];
-  indikatorer: Indikator[];
-  symbols: Record<ControlSymbolKey, string>;
-}>();
+const { machine } = useSelectedMachine();
 
-defineEmits<{
-  (e: "open", item: Knapp): void;
-}>();
+// viktigt: gör den dynamisk
+const machineType = computed(() => machine.value?.type ?? "washer");
+
+const { knappar, indikatorer } = useControlPanel(machineType);
+const { symbols } = useControlSymbols();
+
+const selectedPanelItem = ref<Knapp | null>(null);
+
+function openItem(item: Knapp) {
+  selectedPanelItem.value = item;
+}
+
+function closeModal() {
+  selectedPanelItem.value = null;
+}
 </script>

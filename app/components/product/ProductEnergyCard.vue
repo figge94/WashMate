@@ -1,62 +1,62 @@
 <template>
-  <section
-    class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-    <h2 class="text-lg font-semibold tracking-tight">Energidata</h2>
-
-    <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+  <ProductSpecsCard title="Energidata" :items="specItems" :columns="3">
+    <p
+      v-if="energidata.kommentar"
+      class="mt-6 text-sm text-slate-600 dark:text-slate-300">
       {{ energidata.kommentar }}
     </p>
 
-    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="rounded-xl bg-slate-50 p-4 dark:bg-slate-800/60">
-        <p class="text-xs text-slate-500 dark:text-slate-400">
-          Årlig energiförbrukning
-        </p>
-        <p class="mt-1 font-semibold">
-          {{ energidata.arligEnergiforbrukningKwh }} kWh
-        </p>
-      </div>
-
-      <div class="rounded-xl bg-slate-50 p-4 dark:bg-slate-800/60">
-        <p class="text-xs text-slate-500 dark:text-slate-400">
-          Årlig vattenförbrukning
-        </p>
-        <p class="mt-1 font-semibold">
-          {{ energidata.arligVattenforbrukningLiter }} liter
-        </p>
-      </div>
-
-      <div class="rounded-xl bg-slate-50 p-4 dark:bg-slate-800/60">
-        <p class="text-xs text-slate-500 dark:text-slate-400">Restfukthalt</p>
-        <p class="mt-1 font-semibold">{{ energidata.restfukthaltProcent }} %</p>
-      </div>
-
-      <div class="rounded-xl bg-slate-50 p-4 dark:bg-slate-800/60">
-        <p class="text-xs text-slate-500 dark:text-slate-400">Ljud tvätt</p>
-        <p class="mt-1 font-semibold">{{ energidata.ljudnivaTvattDb }} dB</p>
-      </div>
-
-      <div class="rounded-xl bg-slate-50 p-4 dark:bg-slate-800/60">
-        <p class="text-xs text-slate-500 dark:text-slate-400">
-          Ljud centrifugering
-        </p>
-        <p class="mt-1 font-semibold">
-          {{ energidata.ljudnivaCentrifugeringDb }} dB
-        </p>
-      </div>
-    </div>
-
     <ProductEnergyPrograms
+      v-if="energidata.standardprogram?.length"
       class="mt-8"
       :kommentar="energidata.kommentar"
       :standardprogram="energidata.standardprogram" />
-  </section>
+  </ProductSpecsCard>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import type { Energidata } from "~/types/machine";
+import { useSpecsBuilder } from "~/composables/useSpecsBuilder";
+import { spec } from "~/utils/spec";
 
-defineProps<{
-  energidata: Energidata;
+const { isWasher } = useProductType();
+
+const props = defineProps<{
+  energidata: Partial<Energidata>;
 }>();
+
+const items = computed(() => [
+  spec(
+    "energi",
+    "Årlig energiförbrukning",
+    props.energidata.arligEnergiforbrukningKwh,
+    "kWh"
+  ),
+
+  spec(
+    "vatten",
+    "Årlig vattenförbrukning",
+    props.energidata.arligVattenforbrukningLiter,
+    "liter",
+    isWasher.value
+  ),
+
+  spec(
+    "rest",
+    "Restfukthalt",
+    props.energidata.restfukthaltProcent,
+    "%",
+    isWasher.value
+  ),
+
+  spec(
+    "ljud",
+    isWasher.value ? "Ljud centrifugering" : "Ljudnivå",
+    props.energidata.ljudnivaCentrifugeringDb,
+    "dB"
+  )
+]);
+
+const { specItems } = useSpecsBuilder(items);
 </script>

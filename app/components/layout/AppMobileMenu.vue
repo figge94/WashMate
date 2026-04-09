@@ -12,7 +12,7 @@
       <nav class="flex flex-col gap-2">
         <NuxtLink
           v-for="link in links"
-          :key="link.to"
+          :key="link.label"
           :to="link.to"
           class="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
           active-class="bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900"
@@ -37,7 +37,10 @@
 defineProps<{
   open: boolean;
   isDark: boolean;
-  links: readonly { to: string; label: string }[];
+  links: readonly {
+    to: { path: string; query?: Record<string, string> };
+    label: string;
+  }[];
 }>();
 
 defineEmits<{
