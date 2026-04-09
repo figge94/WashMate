@@ -4,7 +4,11 @@
     <section class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       <MachineSwitcher />
 
-      <ProductHero v-if="machine" :produkt="machine.produkt" />
+      <ProductHero
+        v-if="machine"
+        :produkt="machine.produkt"
+        :type="machine.type"
+        :machine-id="machine.id" />
 
       <div v-if="machine" class="mt-6 grid gap-4 sm:grid-cols-2">
         <ProductGeneralCard :produkt="machine.produkt" />
@@ -34,16 +38,22 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import { useSelectedMachine } from "~/composables/useSelectedMachine";
 
 const { machine } = useSelectedMachine();
+
+const machineLabel = computed(() => {
+  if (!machine.value) return "maskinen";
+  return machine.value.type === "washer" ? "tvättmaskinen" : "torktumlaren";
+});
 
 useHead({
   title: "Produktinformation | WashMate",
   meta: [
     {
       name: "description",
-      content: "Mått, kapacitet och teknisk information om tvättmaskinen."
+      content: `Mått, kapacitet och teknisk information om ${machineLabel.value}.`
     }
   ]
 });

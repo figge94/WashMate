@@ -1,5 +1,5 @@
-import { washer } from "./washer";
-import { dryer } from "./dryer";
+import { washer } from "./machines/washer";
+import { dryer } from "./machines/dryer";
 
 import type { Machine } from "~/types/machine";
 

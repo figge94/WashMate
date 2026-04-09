@@ -19,13 +19,13 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { Produkt } from "~/types/machine";
+import type { MachineType, Produkt } from "~/types/machine";
 
 const props = defineProps<{
   produkt: Partial<Pick<Produkt, "marke" | "modell">>;
+  type: MachineType;
+  machineId: string;
 }>();
-
-const { productTypeText } = useProductType();
 
 const title = computed(() => {
   const { marke, modell } = props.produkt;
@@ -34,5 +34,9 @@ const title = computed(() => {
   if (marke) return marke;
   if (modell) return modell;
   return "Produkt";
+});
+
+const productTypeText = computed(() => {
+  return props.type === "washer" ? "tvättmaskin" : "torktumlare";
 });
 </script>

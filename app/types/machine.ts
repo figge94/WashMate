@@ -8,8 +8,10 @@ export type Machine = {
   energidata: Energidata;
   programfunktioner: Partial<Record<ProgramFunktionKey, ProgramFunktion>>;
   program: Program[];
+  torkdata?: TorkProgramData[];
   felsokning: FelsokningItem[];
   skotsel: SkotselItem[];
+  produktblad?: Produktblad;
 };
 
 export type Program = {
@@ -81,6 +83,30 @@ export type StandardprogramEnergi = {
   tidMinuter: number;
 };
 
+export type TorkProgramData = {
+  program: string;
+  last: string;
+  centrifugering: string;
+  torktidMin: number;
+  energiKwh: number;
+};
+
+export type Produktblad = {
+  varumarke: string;
+  modell: string;
+  kapacitetKg: number;
+  typ: string;
+  energiklass: string;
+  arligEnergiKwh: number;
+  energiFullKwh: number;
+  energiHalvKwh: number;
+  effektAvW: number;
+  effektVilolageW: number;
+  vilolageMin: number;
+  ljudnivaDb: number;
+  inbyggd: boolean;
+};
+
 export type Energidata = {
   arligEnergiforbrukningKwh: number;
   arligVattenforbrukningLiter?: number;
@@ -103,7 +129,7 @@ export type FelsokningItem = {
 
 export type SkotselItem = {
   titel: string;
-  beskrivning: string[];
+  beskrivning?: string[];
   steg?: string[];
   varningar?: string[];
   tips?: string[];
