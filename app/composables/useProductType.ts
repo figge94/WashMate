@@ -1,13 +1,11 @@
 import { computed } from "vue";
+import { useSelectedMachine } from "~/composables/useSelectedMachine";
 
 export const useProductType = () => {
-  const route = useRoute();
+  const { machine } = useSelectedMachine();
 
   const productType = computed<"washer" | "dryer">(() => {
-    const path = route.path.toLowerCase();
-
-    if (path.includes("tork")) return "dryer";
-    return "washer";
+    return machine.value?.type === "dryer" ? "dryer" : "washer";
   });
 
   const isWasher = computed(() => productType.value === "washer");
@@ -21,6 +19,6 @@ export const useProductType = () => {
     productType,
     isWasher,
     isDryer,
-    productTypeText,
+    productTypeText
   };
 };

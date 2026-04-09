@@ -16,6 +16,7 @@ const props = defineProps<{
 }>();
 
 const items = computed(() => [
+  // washer-only
   spec("vatten", "Vatten", props.vatten?.inlopp, undefined, isWasher.value),
   spec(
     "minTryck",
@@ -31,6 +32,8 @@ const items = computed(() => [
     "bar",
     isWasher.value
   ),
+
+  // always
   spec("ip", "IP-klass", props.kapslingsklass)
 ]);
 

@@ -1,20 +1,26 @@
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-import { useMachine } from "~/composables/useMachine";
+import { machines } from "~/data/machines";
 
-export function useSelectedMachine() {
+export const useSelectedMachine = () => {
   const route = useRoute();
-  const { getMachine } = useMachine();
+
+  const fallbackMachine = machines[0];
 
   const selectedId = computed(() => {
     const id = route.query.id;
-    return typeof id === "string" ? id : "washer-electrolux-ew2f2027r1";
+    return typeof id === "string" ? id : fallbackMachine?.id;
   });
 
-  const machine = computed(() => getMachine(selectedId.value));
+  const machine = computed(() => {
+    return (
+      machines.find((machine) => machine.id === selectedId.value) ??
+      fallbackMachine
+    );
+  });
 
   return {
     selectedId,
     machine
   };
-}
+};

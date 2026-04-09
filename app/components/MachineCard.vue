@@ -20,6 +20,7 @@
       </div>
 
       <span
+        v-if="machine.produkt.kapacitetKg != null"
         class="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600 dark:border-slate-700 dark:text-slate-300">
         {{ machine.produkt.kapacitetKg }} kg
       </span>
@@ -72,5 +73,8 @@ const typeLabel = computed(() =>
   props.machine.type === "washer" ? "Tvättmaskin" : "Torktumlare"
 );
 
-const href = computed(() => `/dashboard?id=${props.machine.id}`);
+const href = computed(() => ({
+  path: "/dashboard",
+  query: { id: props.machine.id }
+}));
 </script>

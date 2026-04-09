@@ -8,7 +8,9 @@
         v-if="machine"
         :produkt="machine.produkt"
         :machine-id="machine.id" />
+
       <HomeQuickLinks v-if="machine" class="mt-6" :machine-id="machine.id" />
+
       <HomeCarePreview
         v-if="machine"
         class="mt-6"
@@ -19,17 +21,30 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import { useSelectedMachine } from "~/composables/useSelectedMachine";
 
 const { machine } = useSelectedMachine();
+const { isDryer, productTypeText } = useProductType();
+
+const pageTitle = computed(() => {
+  return isDryer.value
+    ? "Dashboard | Torktumlare | WashMate"
+    : "Dashboard | Tvättmaskin | WashMate";
+});
+
+const pageDescription = computed(() => {
+  return isDryer.value
+    ? "Smart guide för att välja program, förstå funktioner och få hjälp med skötsel och felsökning för din torktumlare."
+    : "Smart tvättguide för att välja program, förstå knappar och få hjälp med skötsel och felsökning för din tvättmaskin.";
+});
 
 useHead({
-  title: "Dashboard | WashMate",
+  title: pageTitle,
   meta: [
     {
       name: "description",
-      content:
-        "Smart tvättguide för att välja program, förstå knappar och få hjälp med skötsel och felsökning."
+      content: pageDescription
     }
   ]
 });

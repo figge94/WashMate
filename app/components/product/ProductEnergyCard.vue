@@ -33,7 +33,6 @@ const items = computed(() => [
     props.energidata.arligEnergiforbrukningKwh,
     "kWh"
   ),
-
   spec(
     "vatten",
     "Årlig vattenförbrukning",
@@ -41,7 +40,6 @@ const items = computed(() => [
     "liter",
     isWasher.value
   ),
-
   spec(
     "rest",
     "Restfukthalt",
@@ -49,7 +47,13 @@ const items = computed(() => [
     "%",
     isWasher.value
   ),
-
+  spec(
+    "ljudTvatt",
+    "Ljud tvätt",
+    props.energidata.ljudnivaTvattDb,
+    "dB",
+    isWasher.value
+  ),
   spec(
     "ljud",
     isWasher.value ? "Ljud centrifugering" : "Ljudnivå",

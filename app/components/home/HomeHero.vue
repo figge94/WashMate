@@ -12,15 +12,14 @@
 
     <p
       class="mt-4 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
-      Enkel guide för program, produktinformation, skötsel och felsökning för
-      vald maskin.
+      {{ description }}
     </p>
 
     <div class="mt-8 flex flex-col gap-3 sm:flex-row">
       <NuxtLink
-        :to="{ path: '/tvatthjalp', query: { id: machineId } }"
+        :to="{ path: helpPath, query: { id: machineId } }"
         class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200">
-        Öppna maskinhjälp
+        {{ helpButtonText }}
       </NuxtLink>
 
       <NuxtLink
@@ -33,10 +32,25 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import type { Produkt } from "~/types/machine";
+
+const { isDryer } = useProductType();
 
 defineProps<{
   produkt: Pick<Produkt, "marke" | "modell" | "namn">;
   machineId: string;
 }>();
+
+const description = computed(() =>
+  isDryer.value
+    ? "Enkel guide för program, produktinformation, skötsel och felsökning för vald torktumlare."
+    : "Enkel guide för program, produktinformation, skötsel och felsökning för vald tvättmaskin."
+);
+
+const helpButtonText = computed(() =>
+  isDryer.value ? "Öppna torkhjälp" : "Öppna tvätthjälp"
+);
+
+const helpPath = computed(() => (isDryer.value ? "/torkhjalp" : "/tvatthjalp"));
 </script>

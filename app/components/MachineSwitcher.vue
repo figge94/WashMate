@@ -31,16 +31,15 @@ const selectedId = computed(() => {
   return typeof id === "string" ? id : fallbackId;
 });
 
-function setId(id: string) {
+const setId = (id: string) => {
   router.push({
     query: {
       ...route.query,
       id
     }
   });
-}
+};
 
-function getLabel(machine: Machine) {
-  return `${machine.type === "washer" ? "Tvättmaskin" : "Torktumlare"} · ${machine.produkt.modell}`;
-}
+const getLabel = (machine: Machine) =>
+  `${machine.type === "washer" ? "Tvättmaskin" : "Torktumlare"} · ${machine.produkt.modell}`;
 </script>

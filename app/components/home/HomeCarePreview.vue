@@ -7,12 +7,13 @@
           class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
           Skötsel
         </p>
+
         <h2 class="mt-2 text-2xl font-semibold tracking-tight">
-          Håll maskinen ren och fräsch
+          {{ title }}
         </h2>
+
         <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
-          Några viktiga saker att göra regelbundet för bättre resultat och
-          längre livslängd.
+          {{ description }}
         </p>
       </div>
 
@@ -51,10 +52,25 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import type { SkotselItem } from "~/types/machine";
+
+const { isDryer } = useProductType();
 
 defineProps<{
   skotsel: SkotselItem[];
   machineId: string;
 }>();
+
+const title = computed(() =>
+  isDryer.value
+    ? "Håll torktumlaren ren och fräsch"
+    : "Håll tvättmaskinen ren och fräsch"
+);
+
+const description = computed(() =>
+  isDryer.value
+    ? "Några viktiga saker att göra regelbundet för bättre resultat och längre livslängd för din torktumlare."
+    : "Några viktiga saker att göra regelbundet för bättre resultat och längre livslängd för din tvättmaskin."
+);
 </script>
