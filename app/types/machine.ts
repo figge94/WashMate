@@ -1,3 +1,32 @@
+export type MachineType = "washer" | "dryer";
+
+export type Machine = {
+  id: string;
+  type: MachineType;
+  manualUrl: string;
+  produkt: Produkt;
+  energidata: Energidata;
+  programfunktioner: Partial<Record<ProgramFunktionKey, ProgramFunktion>>;
+  program: Program[];
+  felsokning: FelsokningItem[];
+  skotsel: SkotselItem[];
+};
+
+export type Program = {
+  namn: string;
+  temperatur?: string;
+  maxCentrifugering?: string;
+  maxMangd: string;
+  beskrivning: string;
+  funktioner: ProgramFunktionKey[];
+  symboler?: string[];
+};
+
+export type ProgramFunktion = {
+  namn: string;
+  beskrivning: string;
+};
+
 export type ProgramFunktionKey =
   | "centrifugering"
   | "flackborttagning"
@@ -7,19 +36,18 @@ export type ProgramFunktionKey =
   | "timeManager"
   | "softPlus";
 
-export type ProgramFunktion = {
+export type Produkt = {
   namn: string;
-  beskrivning: string;
-};
-
-export type Program = {
-  namn: string;
-  temperatur: string;
-  maxCentrifugering: string;
-  maxMangd: string;
-  beskrivning: string;
-  funktioner: ProgramFunktionKey[];
-  symboler?: string[];
+  modell: string;
+  marke: string;
+  pnc: string;
+  kapacitetKg: number;
+  maxCentrifugering?: number;
+  energiklass: string;
+  dimensioner: ProduktDimensioner;
+  el: ProduktEl;
+  vatten?: ProduktVatten;
+  kapslingsklass: string;
 };
 
 export type ProduktDimensioner = {
@@ -42,20 +70,6 @@ export type ProduktVatten = {
   inlopp: string;
 };
 
-export type Produkt = {
-  namn: string;
-  modell: string;
-  marke: string;
-  pnc: string;
-  kapacitetKg: number;
-  maxCentrifugering: number;
-  energiklass: string;
-  dimensioner: ProduktDimensioner;
-  el: ProduktEl;
-  vatten: ProduktVatten;
-  kapslingsklass: string;
-};
-
 export type StandardprogramEnergi = {
   namn: string;
   last: string;
@@ -65,14 +79,14 @@ export type StandardprogramEnergi = {
 
 export type Energidata = {
   arligEnergiforbrukningKwh: number;
-  arligVattenforbrukningLiter: number;
-  centrifugeringseffektivitetsklass: string;
-  restfukthaltProcent: number;
+  arligVattenforbrukningLiter?: number;
+  centrifugeringseffektivitetsklass?: string;
+  restfukthaltProcent?: number;
   effektFranlageW: number;
   effektVilolageW: number;
   vilolagetsVaraktighetMinuter: number;
-  ljudnivaTvattDb: number;
-  ljudnivaCentrifugeringDb: number;
+  ljudnivaTvattDb?: number;
+  ljudnivaCentrifugeringDb?: number;
   inbyggdMaskin: boolean;
   standardprogram: StandardprogramEnergi[];
   kommentar: string;
@@ -86,14 +100,4 @@ export type FelsokningItem = {
 export type SkotselItem = {
   titel: string;
   innehall: string[];
-};
-
-export type Machine = {
-  manualUrl: string;
-  produkt: Produkt;
-  energidata: Energidata;
-  programfunktioner: Record<ProgramFunktionKey, ProgramFunktion>;
-  program: Program[];
-  felsokning: FelsokningItem[];
-  skotsel: SkotselItem[];
 };

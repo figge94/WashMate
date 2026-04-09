@@ -35,6 +35,6 @@ import type {
 
 defineProps<{
   program: Program;
-  programfunktioner: Record<ProgramFunktionKey, ProgramFunktion>;
+  programfunktioner: Partial<Record<ProgramFunktionKey, ProgramFunktion>>;
 }>();
 </script>

@@ -4,24 +4,27 @@
     <h2 class="text-lg font-semibold tracking-tight">Installation</h2>
 
     <div class="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-      <p>
-        <span class="font-medium text-slate-900 dark:text-slate-100">
-          Vatten:
-        </span>
-        {{ vatten.inlopp }}
-      </p>
-      <p>
-        <span class="font-medium text-slate-900 dark:text-slate-100">
-          Min tryck:
-        </span>
-        {{ vatten.minTryckBar }} bar
-      </p>
-      <p>
-        <span class="font-medium text-slate-900 dark:text-slate-100">
-          Max tryck:
-        </span>
-        {{ vatten.maxTryckBar }} bar
-      </p>
+      <template v-if="vatten">
+        <p>
+          <span class="font-medium text-slate-900 dark:text-slate-100">
+            Vatten:
+          </span>
+          {{ vatten.inlopp }}
+        </p>
+        <p>
+          <span class="font-medium text-slate-900 dark:text-slate-100">
+            Min tryck:
+          </span>
+          {{ vatten.minTryckBar }} bar
+        </p>
+        <p>
+          <span class="font-medium text-slate-900 dark:text-slate-100">
+            Max tryck:
+          </span>
+          {{ vatten.maxTryckBar }} bar
+        </p>
+      </template>
+
       <p>
         <span class="font-medium text-slate-900 dark:text-slate-100">
           IP-klass:
@@ -36,7 +39,7 @@
 import type { ProduktVatten } from "~/types/machine";
 
 defineProps<{
-  vatten: ProduktVatten;
+  vatten?: ProduktVatten;
   kapslingsklass: string;
 }>();
 </script>

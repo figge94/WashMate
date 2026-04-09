@@ -2,6 +2,7 @@
   <main
     class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
     <section class="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
+      <MachineSwitcher />
       <div
         class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-10">
         <p
@@ -19,7 +20,7 @@
         </p>
       </div>
 
-      <div class="mt-6 space-y-4">
+      <div v-if="machine" class="mt-6 space-y-4">
         <article
           v-for="item in machine.felsokning"
           :key="item.problem"
@@ -45,9 +46,9 @@
 </template>
 
 <script setup lang="ts">
-import { useMachine } from "~/composables/useMachine";
+import { useSelectedMachine } from "~/composables/useSelectedMachine";
 
-const { machine } = useMachine();
+const { machine } = useSelectedMachine();
 
 useHead({
   title: "Felsökning | WashMate",

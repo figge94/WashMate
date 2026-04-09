@@ -10,7 +10,9 @@
         v-for="funktion in funktioner"
         :key="funktion"
         class="inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200">
-        {{ programfunktioner[funktion].namn }}
+        <span v-if="programfunktioner[funktion]">
+          {{ programfunktioner[funktion]?.namn }}
+        </span>
       </span>
     </div>
   </div>
@@ -21,6 +23,6 @@ import type { ProgramFunktion, ProgramFunktionKey } from "~/types/machine";
 
 defineProps<{
   funktioner: ProgramFunktionKey[];
-  programfunktioner: Record<ProgramFunktionKey, ProgramFunktion>;
+  programfunktioner: Partial<Record<ProgramFunktionKey, ProgramFunktion>>;
 }>();
 </script>

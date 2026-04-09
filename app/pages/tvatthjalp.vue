@@ -2,6 +2,7 @@
   <main
     class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
     <section class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+      <MachineSwitcher />
       <WashHelpHero />
 
       <WashHelpChoices
@@ -33,14 +34,17 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { useMachine } from "~/composables/useMachine";
+import { useSelectedMachine } from "~/composables/useSelectedMachine";
 import { useControlPanel } from "~/composables/useControlPanel";
 import { useControlSymbols } from "~/composables/useControlSymbols";
-import { useWashChoices } from "~/composables/useWashChoices";
+import { useMachineChoices } from "~/composables/useMachineChoices";
 import type { Knapp } from "~/types/control-panel";
 
-const { machine } = useMachine();
-const { choices } = useWashChoices();
+const { machine } = useSelectedMachine();
+
+const machineType = computed(() => machine.value?.type ?? "washer");
+const { choices } = useMachineChoices(machineType.value);
+
 const { knappar, indikatorer } = useControlPanel();
 const { symbols } = useControlSymbols();
 
@@ -56,25 +60,26 @@ function closeModal() {
 }
 
 const selectedChoice = computed(
-  () => choices.find((choice) => choice.id === selected.value) ?? null
+  () => choices.value.find((choice) => choice.id === selected.value) ?? null
 );
 
 const selectedProgram = computed(() => {
   const programName = selectedChoice.value?.program;
-  if (!programName) return null;
+  if (!programName || !machine.value) return null;
 
   return (
-    machine.program.find((program) => program.namn === programName) ?? null
+    machine.value.program.find((program) => program.namn === programName) ??
+    null
   );
 });
 
 useHead({
-  title: "Tvätthjälp | WashMate",
+  title: "Maskinhjälp | WashMate",
   meta: [
     {
       name: "description",
       content:
-        "Få hjälp att välja rätt tvättprogram baserat på dina kläder och behov."
+        "Få hjälp att välja rätt program och förstå funktioner för vald maskin."
     }
   ]
 });
