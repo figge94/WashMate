@@ -136,6 +136,11 @@ export type SkotselItem = {
   tips?: string[];
 };
 
+export type TipsSymbol = {
+  symbol: string;
+  beskrivning: string;
+};
+
 export type RadTipsItem = {
   titel: string;
   beskrivning?: string[];

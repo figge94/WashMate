@@ -27,7 +27,7 @@
 
       <!-- 👇 NY -->
       <div class="mt-6">
-        <TipsAccordion :items="tipsData" />
+        <TipsAccordion v-if="tipsData.length" class="mt-6" :items="tipsData" />
       </div>
     </section>
 
@@ -79,42 +79,7 @@ const selectedProgram = computed(() => {
   );
 });
 
-const tipsData = [
-  {
-    titel: "Förbereda tvätten",
-    beskrivning: [
-      "Ställ alltid in det program som passar för typen av tvätt",
-      "Tvätta inte ljusa och mörka färger ihop",
-      "Använd rätt program för material",
-      "Överskrid inte maximal tvättmängd",
-      "Torktumlaren klarar av att torktumlas – kontrollera etiketten",
-      "Torka inte stora och små plagg tillsammans",
-      "Skaka större textilier innan torkning",
-      "Stäng dragkedjor",
-      "Knäpp knappar",
-      "Töm fickor",
-      "Vänd plagg med bomullsfoder ut och in"
-    ],
-    symboler: [
-      {
-        symbol: "torktumling",
-        beskrivning: "Tvätten är lämplig för torktumling"
-      },
-      {
-        symbol: "hög",
-        beskrivning: "Torktumling vid hög temperatur"
-      },
-      {
-        symbol: "låg",
-        beskrivning: "Torktumling vid låg temperatur"
-      },
-      {
-        symbol: "ej",
-        beskrivning: "Ej lämplig för torktumling"
-      }
-    ]
-  }
-];
+const tipsData = computed(() => machine.value?.radOchTips ?? []);
 
 watch(
   choices,

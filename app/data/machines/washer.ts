@@ -412,5 +412,64 @@ export const washer: Machine = {
         "Se till att temperaturen är över 0°C innan användning"
       ]
     }
+  ],
+  radOchTips: [
+    {
+      titel: "Fylla på tvätt",
+      beskrivning: [
+        "Dela in tvätten i vit, kulörtvätt, syntetmaterial, ömtåliga material och ylle",
+        "Följ tvättanvisningarna som finns på tvättmärkningen",
+        "Tvätta inte vita och färgade plagg tillsammans",
+        "Vissa färgade plagg kan missfärga första tvätten. Tvätta dem separat de första gångerna",
+        "Knäpp knapparna på örngott och tryckknappar och stäng dragkedjor och hakar. Knyt skärp",
+        "Vänd ut och in på flerfärgade plagg, ylle och plagg med tryck",
+        "Ta bort svåra fläckar med ett specialmedel",
+        "Tvätta och förbehandla svåra fläckar innan plagget läggs i trumman",
+        "Var försiktig med gardiner. Ta bort krokar och lägg gardinerna i en tvättpåse eller ett örngott",
+        "Tvätta inte plagg utan fåll eller med hål. Tvätta små plagg i tvättpåse",
+        "En mycket liten tvättmängd kan orsaka balansproblem vid centrifugering",
+        "Undvik att tvätta kläder som är fulla av långt djurhår eller plagg av dålig kvalitet som släpper ut mycket ludd",
+        "Töm alla veck på plaggen"
+      ]
+    },
+    {
+      titel: "Svåra fläckar",
+      beskrivning: [
+        "Det räcker inte alltid med vatten och tvättmedel för vissa fläckar",
+        "Vi rekommenderar att du förbehandlar dessa fläckar innan du lägger in plaggen i maskinen",
+        "Det finns särskilda fläckborttagningsmedel. Använd ett medel som lämpar sig för typen av fläck och material"
+      ]
+    },
+    {
+      titel: "Tvättmedel och tillsatser",
+      beskrivning: [
+        "Använd endast tvättmedel och tillsatser som är avsedda för tvättmaskiner",
+        "Pulver för alla typer av material, bomull och syntet, samt vittvätt",
+        "Flytande tvättmedel helst för lågtemperaturprogram med max 60 °C",
+        "Flytande tvättmedel för fintvättprogram med låg temperatur",
+        "Specialtvättmedel för endast ylle, specialtvättmedel för ömtåliga material eller specialtvättmedel för siden",
+        "Blanda inte olika sorters tvättmedel",
+        "Använd inte flytande tvättmedel med förtvätt",
+        "Överdosera inte tvättmedel",
+        "Följ alltid doseringsanvisningarna på förpackningen"
+      ]
+    },
+    {
+      titel: "Miljötips",
+      beskrivning: [
+        "Ställ in ett program utan förtvätt om tvätten är normalt smutsig",
+        "Starta alltid ett tvättprogram med full maskin",
+        "Använd vid behov fläckborttagningsmedel när du ställer in ett program med låg temperatur"
+      ]
+    },
+    {
+      titel: "Vattenhårdhet",
+      beskrivning: [
+        "Kontrollera vattenhårdheten i hemmet så att du använder rätt mängd tvättmedel",
+        "Vid hög vattenhårdhet behövs mer tvättmedel",
+        "I områden med mjukt vatten behövs mindre tvättmedel",
+        "Kontakta lokala vattenmyndigheter om du behöver veta vattenhårdheten där du bor"
+      ]
+    }
   ]
 };
