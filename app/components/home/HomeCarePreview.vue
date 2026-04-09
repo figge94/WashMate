@@ -34,7 +34,7 @@
         </p>
 
         <ul class="mt-2 space-y-1 text-sm text-slate-700 dark:text-slate-300">
-          <li v-for="text in item.innehall.slice(0, 3)" :key="text">
+          <li v-for="text in item.beskrivning?.slice(0, 3) || []" :key="text">
             • {{ text }}
           </li>
         </ul>
@@ -53,14 +53,15 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { SkotselItem } from "~/types/machine";
+import type { MachineType, SkotselItem } from "~/types/machine";
 
-const { isDryer } = useProductType();
-
-defineProps<{
+const props = defineProps<{
   skotsel: SkotselItem[];
   machineId: string;
+  type: MachineType;
 }>();
+
+const isDryer = computed(() => props.type === "dryer");
 
 const title = computed(() =>
   isDryer.value

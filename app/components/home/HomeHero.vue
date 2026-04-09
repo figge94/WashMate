@@ -33,14 +33,15 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { Produkt } from "~/types/machine";
+import type { MachineType, Produkt } from "~/types/machine";
 
-const { isDryer } = useProductType();
-
-defineProps<{
+const props = defineProps<{
   produkt: Pick<Produkt, "marke" | "modell" | "namn">;
   machineId: string;
+  type: MachineType;
 }>();
+
+const isDryer = computed(() => props.type === "dryer");
 
 const description = computed(() =>
   isDryer.value

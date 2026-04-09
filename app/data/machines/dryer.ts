@@ -358,5 +358,44 @@ export const dryer: Machine = {
     vilolageMin: 10,
     ljudnivaDb: 67,
     inbyggd: false
-  }
+  },
+  radOchTips: [
+    {
+      titel: "Förbereda tvätten",
+      beskrivning: [
+        "Ställ alltid in det program som passar för typen av tvätt",
+        "Tvätta inte ljusa och mörka färger ihop",
+        "Använd ett lämpligt program för vit-, kulörtvätt, jersey och stickat för att förhindra att plaggen krymper",
+        "Överskrid inte maximal tvättmängd som finns i programkapitlet eller visas på displayen",
+        "Torktumlaren klarar av att torktumlas. Se instruktionerna på plaggens klädvårdsetiketter",
+        "Torka inte stora och små plagg tillsammans. Små plagg kan fastna i större plagg och därmed inte torkas",
+        "Skaka större textilier innan de stoppas in i torktumlaren. Det är för att undvika att fukt ligger kvar inuti plagget efter torkprogrammet",
+        "Stäng dragkedjorna",
+        "Knäpp knapparna på påslakan",
+        "Låt inte lösa band trassla sig före torkningen. Knyt ihop dem innan du startar programmet",
+        "Töm alla fickor på föremål",
+        "Om plagget har ett innerfoder av bomull ska plagget vändas ut och in. Bomullssidan ska alltid vara vänd utåt"
+      ],
+      symboler: [
+        {
+          symbol: "torktumling",
+          beskrivning: "Tvätten är lämplig för torktumling"
+        },
+        {
+          symbol: "torktumling-hog-varme",
+          beskrivning:
+            "Tvätten är lämplig för torktumling vid högre temperaturer"
+        },
+        {
+          symbol: "torktumling-lag-varme",
+          beskrivning:
+            "Tvätten är lämplig för torktumling endast vid låga temperaturer"
+        },
+        {
+          symbol: "ej-torktumling",
+          beskrivning: "Plagget är inte lämpligt för torktumling"
+        }
+      ]
+    }
+  ]
 };

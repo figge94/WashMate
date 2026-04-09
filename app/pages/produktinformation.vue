@@ -14,7 +14,8 @@
         <ProductGeneralCard :produkt="machine.produkt" />
         <ProductPerformanceCard
           :produkt="machine.produkt"
-          :energidata="machine.energidata" />
+          :energidata="machine.energidata"
+          :type="machine.type" />
       </div>
 
       <ProductDimensionsCard
@@ -26,13 +27,15 @@
         <ProductElectricalCard :el="machine.produkt.el" />
         <ProductInstallationCard
           :vatten="machine.produkt.vatten"
-          :kapslingsklass="machine.produkt.kapslingsklass" />
+          :kapslingsklass="machine.produkt.kapslingsklass"
+          :type="machine.type" />
       </div>
 
       <ProductEnergyCard
         v-if="machine"
         class="mt-4"
-        :energidata="machine.energidata" />
+        :energidata="machine.energidata"
+        :type="machine.type" />
     </section>
   </main>
 </template>

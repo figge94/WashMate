@@ -4,16 +4,19 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { Energidata, Produkt } from "~/types/machine";
+import type { Energidata, MachineType, Produkt } from "~/types/machine";
 import { useSpecsBuilder } from "~/composables/useSpecsBuilder";
 import { spec } from "~/utils/spec";
 
-const { isWasher } = useProductType();
-
 const props = defineProps<{
   produkt: Partial<Pick<Produkt, "maxCentrifugering" | "energiklass">>;
-  energidata: Partial<Pick<Energidata, "ljudnivaCentrifugeringDb">>;
+  energidata: Partial<
+    Pick<Energidata, "ljudnivaCentrifugeringDb" | "ljudnivaTvattDb">
+  >;
+  type: MachineType;
 }>();
+
+const isWasher = computed(() => props.type === "washer");
 
 const items = computed(() => [
   spec(
@@ -27,7 +30,9 @@ const items = computed(() => [
   spec(
     "ljud",
     isWasher.value ? "Ljud centrifugering" : "Ljudnivå",
-    props.energidata.ljudnivaCentrifugeringDb,
+    isWasher.value
+      ? props.energidata.ljudnivaCentrifugeringDb
+      : props.energidata.ljudnivaTvattDb,
     "dB"
   )
 ]);

@@ -12,6 +12,7 @@ export type Machine = {
   felsokning: FelsokningItem[];
   skotsel: SkotselItem[];
   produktblad?: Produktblad;
+  radOchTips?: RadTipsItem[];
 };
 
 export type Program = {
@@ -133,4 +134,13 @@ export type SkotselItem = {
   steg?: string[];
   varningar?: string[];
   tips?: string[];
+};
+
+export type RadTipsItem = {
+  titel: string;
+  beskrivning?: string[];
+  symboler?: {
+    symbol: string;
+    beskrivning: string;
+  }[];
 };

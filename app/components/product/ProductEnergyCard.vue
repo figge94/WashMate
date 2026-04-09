@@ -16,15 +16,16 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { Energidata } from "~/types/machine";
+import type { Energidata, MachineType } from "~/types/machine";
 import { useSpecsBuilder } from "~/composables/useSpecsBuilder";
 import { spec } from "~/utils/spec";
 
-const { isWasher } = useProductType();
-
 const props = defineProps<{
   energidata: Partial<Energidata>;
+  type: MachineType;
 }>();
+
+const isWasher = computed(() => props.type === "washer");
 
 const items = computed(() => [
   spec(
@@ -49,16 +50,18 @@ const items = computed(() => [
   ),
   spec(
     "ljudTvatt",
-    "Ljud tvätt",
-    props.energidata.ljudnivaTvattDb,
-    "dB",
+    isWasher.value ? "Ljud tvätt" : "Ljudnivå",
     isWasher.value
+      ? props.energidata.ljudnivaTvattDb
+      : props.energidata.ljudnivaTvattDb,
+    "dB"
   ),
   spec(
-    "ljud",
-    isWasher.value ? "Ljud centrifugering" : "Ljudnivå",
+    "ljudCentrifugering",
+    "Ljud centrifugering",
     props.energidata.ljudnivaCentrifugeringDb,
-    "dB"
+    "dB",
+    isWasher.value
   )
 ]);
 

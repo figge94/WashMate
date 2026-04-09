@@ -7,15 +7,21 @@
       <HomeHero
         v-if="machine"
         :produkt="machine.produkt"
-        :machine-id="machine.id" />
+        :machine-id="machine.id"
+        :type="machine.type" />
 
-      <HomeQuickLinks v-if="machine" class="mt-6" :machine-id="machine.id" />
+      <HomeQuickLinks
+        v-if="machine"
+        class="mt-6"
+        :machine-id="machine.id"
+        :type="machine.type" />
 
       <HomeCarePreview
         v-if="machine"
         class="mt-6"
         :skotsel="machine.skotsel"
-        :machine-id="machine.id" />
+        :machine-id="machine.id"
+        :type="machine.type" />
     </section>
   </main>
 </template>
@@ -25,7 +31,8 @@ import { computed } from "vue";
 import { useSelectedMachine } from "~/composables/useSelectedMachine";
 
 const { machine } = useSelectedMachine();
-const { isDryer, productTypeText } = useProductType();
+
+const isDryer = computed(() => machine.value?.type === "dryer");
 
 const pageTitle = computed(() => {
   return isDryer.value

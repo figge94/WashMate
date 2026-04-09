@@ -4,19 +4,19 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { ProduktVatten } from "~/types/machine";
+import type { MachineType, ProduktVatten } from "~/types/machine";
 import { useSpecsBuilder } from "~/composables/useSpecsBuilder";
 import { spec } from "@/utils/spec";
-
-const { isWasher } = useProductType();
 
 const props = defineProps<{
   vatten?: Partial<ProduktVatten>;
   kapslingsklass?: string;
+  type: MachineType;
 }>();
 
+const isWasher = computed(() => props.type === "washer");
+
 const items = computed(() => [
-  // washer-only
   spec("vatten", "Vatten", props.vatten?.inlopp, undefined, isWasher.value),
   spec(
     "minTryck",
@@ -32,8 +32,6 @@ const items = computed(() => [
     "bar",
     isWasher.value
   ),
-
-  // always
   spec("ip", "IP-klass", props.kapslingsklass)
 ]);
 

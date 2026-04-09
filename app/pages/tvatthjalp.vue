@@ -24,6 +24,11 @@
         :indikatorer="indikatorer"
         :symbols="symbols"
         @open="openItem" />
+
+      <!-- 👇 NY -->
+      <div class="mt-6">
+        <TipsAccordion :items="tipsData" />
+      </div>
     </section>
 
     <WashHelpControlModal
@@ -46,7 +51,7 @@ const { machine } = useSelectedMachine();
 const machineType = computed(() => machine.value?.type ?? "washer");
 const { choices } = useMachineChoices(machineType);
 
-const { knappar, indikatorer } = useControlPanel();
+const { knappar, indikatorer } = useControlPanel(machineType);
 const { symbols } = useControlSymbols();
 
 const selected = ref("vardag");
@@ -73,6 +78,43 @@ const selectedProgram = computed(() => {
     null
   );
 });
+
+const tipsData = [
+  {
+    titel: "Förbereda tvätten",
+    beskrivning: [
+      "Ställ alltid in det program som passar för typen av tvätt",
+      "Tvätta inte ljusa och mörka färger ihop",
+      "Använd rätt program för material",
+      "Överskrid inte maximal tvättmängd",
+      "Torktumlaren klarar av att torktumlas – kontrollera etiketten",
+      "Torka inte stora och små plagg tillsammans",
+      "Skaka större textilier innan torkning",
+      "Stäng dragkedjor",
+      "Knäpp knappar",
+      "Töm fickor",
+      "Vänd plagg med bomullsfoder ut och in"
+    ],
+    symboler: [
+      {
+        symbol: "torktumling",
+        beskrivning: "Tvätten är lämplig för torktumling"
+      },
+      {
+        symbol: "hög",
+        beskrivning: "Torktumling vid hög temperatur"
+      },
+      {
+        symbol: "låg",
+        beskrivning: "Torktumling vid låg temperatur"
+      },
+      {
+        symbol: "ej",
+        beskrivning: "Ej lämplig för torktumling"
+      }
+    ]
+  }
+];
 
 watch(
   choices,

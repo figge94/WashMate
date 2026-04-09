@@ -40,12 +40,14 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import type { MachineType } from "~/types/machine";
 
-defineProps<{
+const props = defineProps<{
   machineId: string;
+  type: MachineType;
 }>();
 
-const { isDryer } = useProductType();
+const isDryer = computed(() => props.type === "dryer");
 
 const helpTitle = computed(() => (isDryer.value ? "Torkhjälp" : "Tvätthjälp"));
 
