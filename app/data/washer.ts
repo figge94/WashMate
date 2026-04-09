@@ -5,36 +5,37 @@ import type {
   ProgramFunktionKey
 } from "~/types/machine";
 
-const programfunktioner: Record<ProgramFunktionKey, ProgramFunktion> = {
-  centrifugering: {
-    namn: "Centrifugering",
-    beskrivning: "Ändrar centrifugeringshastigheten."
-  },
-  flackborttagning: {
-    namn: "Fläckborttagning",
-    beskrivning: "Extra behandling för fläckig tvätt."
-  },
-  fortvatt: {
-    namn: "Förtvätt",
-    beskrivning: "Lägger till en extra tvättfas före huvudtvätten."
-  },
-  extraSkoljning: {
-    namn: "Extra sköljning",
-    beskrivning: "Lägger till extra sköljning."
-  },
-  fordrojdStart: {
-    namn: "Fördröjd start",
-    beskrivning: "Startar programmet senare."
-  },
-  timeManager: {
-    namn: "Time Manager",
-    beskrivning: "Kortar ner programtiden."
-  },
-  softPlus: {
-    namn: "Soft Plus",
-    beskrivning: "Hjälper sköljmedel att fördelas bättre i tvätten."
-  }
-};
+const programfunktioner: Partial<Record<ProgramFunktionKey, ProgramFunktion>> =
+  {
+    centrifugering: {
+      namn: "Centrifugering",
+      beskrivning: "Ändrar centrifugeringshastigheten."
+    },
+    flackborttagning: {
+      namn: "Fläckborttagning",
+      beskrivning: "Extra behandling för fläckig tvätt."
+    },
+    fortvatt: {
+      namn: "Förtvätt",
+      beskrivning: "Lägger till en extra tvättfas före huvudtvätten."
+    },
+    extraSkoljning: {
+      namn: "Extra sköljning",
+      beskrivning: "Lägger till extra sköljning."
+    },
+    fordrojdStart: {
+      namn: "Fördröjd start",
+      beskrivning: "Startar programmet senare."
+    },
+    timeManager: {
+      namn: "Time Manager",
+      beskrivning: "Kortar ner programtiden."
+    },
+    softPlus: {
+      namn: "Soft Plus",
+      beskrivning: "Hjälper sköljmedel att fördelas bättre i tvätten."
+    }
+  };
 
 const program: Program[] = [
   {
@@ -355,7 +356,7 @@ export const washer: Machine = {
   skotsel: [
     {
       titel: "Utvändig rengöring",
-      innehall: [
+      beskrivning: [
         "Rengör med milt rengöringsmedel och varmt vatten",
         "Torka alla ytor noggrant",
         "Använd inte lösningsmedel eller kemikalier",
@@ -364,7 +365,7 @@ export const washer: Machine = {
     },
     {
       titel: "Avkalkning",
-      innehall: [
+      beskrivning: [
         "Använd avkalkningsmedel vid medelhårt eller hårt vatten",
         "Kontrollera trumman regelbundet för kalk",
         "Kör tom maskin med avkalkningsmedel vid behov",
@@ -373,7 +374,7 @@ export const washer: Machine = {
     },
     {
       titel: "Underhållstvätt",
-      innehall: [
+      beskrivning: [
         "Kör minst en gång i månaden",
         "Motverkar lukt, bakterier och avlagringar",
         "Använd hög temperatur"
@@ -381,7 +382,7 @@ export const washer: Machine = {
     },
     {
       titel: "Rengöring av trumma",
-      innehall: [
+      beskrivning: [
         "Kontrollera trumman regelbundet",
         "Använd rengöringsmedel för rostfritt stål",
         "Kör bomullsprogram på hög temperatur utan tvätt",
@@ -390,22 +391,22 @@ export const washer: Machine = {
     },
     {
       titel: "Lucktätning",
-      innehall: [
+      beskrivning: [
         "Kontrollera regelbundet",
         "Ta bort föremål som mynt och knappar"
       ]
     },
     {
       titel: "Tvättmedelsfack",
-      innehall: ["Rengör regelbundet"]
+      beskrivning: ["Rengör regelbundet"]
     },
     {
       titel: "Tilloppsslang och filter",
-      innehall: ["Rengör vid behov"]
+      beskrivning: ["Rengör vid behov"]
     },
     {
       titel: "Frysrisk",
-      innehall: [
+      beskrivning: [
         "Töm slangar och pump vid temperatur under 0°C",
         "Koppla bort ström och stäng vatten",
         "Se till att temperaturen är över 0°C innan användning"

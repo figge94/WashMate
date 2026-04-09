@@ -34,7 +34,11 @@ export type ProgramFunktionKey =
   | "extraSkoljning"
   | "fordrojdStart"
   | "timeManager"
-  | "softPlus";
+  | "softPlus"
+  | "torrhetsgrad"
+  | "tidtorkning"
+  | "skrynkelskydd"
+  | "signal";
 
 export type Produkt = {
   namn: string;
@@ -99,5 +103,8 @@ export type FelsokningItem = {
 
 export type SkotselItem = {
   titel: string;
-  innehall: string[];
+  beskrivning: string[];
+  steg?: string[];
+  varningar?: string[];
+  tips?: string[];
 };
