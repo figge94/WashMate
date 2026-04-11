@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'rounded-3xl border border-slate-200 bg-gradient-to-br p-6 shadow-sm dark:border-slate-800 dark:from-slate-900 dark:to-slate-900 sm:p-8',
+      'rounded-3xl border border-slate-200 bg-linear-to-br p-6 shadow-sm dark:border-slate-800 dark:from-slate-900 dark:to-slate-900 sm:p-8',
       gradient
     ]">
     <p
