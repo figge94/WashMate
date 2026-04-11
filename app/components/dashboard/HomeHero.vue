@@ -1,21 +1,21 @@
 <template>
   <div
-    class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-10">
+    class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-8">
     <p
       class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
       {{ produkt.marke }} {{ produkt.modell }}
     </p>
 
-    <h1 class="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+    <h1 class="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
       {{ produkt.namn }}
     </h1>
 
     <p
-      class="mt-4 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
+      class="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300 sm:text-base">
       {{ description }}
     </p>
 
-    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+    <div class="mt-5 flex flex-wrap gap-3">
       <NuxtLink
         :to="{ path: helpPath, query: { id: machineId } }"
         class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200">
@@ -43,11 +43,8 @@ const props = defineProps<{
 
 const isDryer = computed(() => props.type === "dryer");
 
-const description = computed(() =>
-  isDryer.value
-    ? "Enkel guide för program, produktinformation, skötsel och felsökning för vald torktumlare."
-    : "Enkel guide för program, produktinformation, skötsel och felsökning för vald tvättmaskin."
-);
+const description =
+  "Guide för program, skötsel, felsökning och produktinformation.";
 
 const helpButtonText = computed(() =>
   isDryer.value ? "Öppna torkhjälp" : "Öppna tvätthjälp"

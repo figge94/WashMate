@@ -32,58 +32,116 @@ const programfunktioner: Partial<Record<ProgramFunktionKey, ProgramFunktion>> =
 
 const program: Program[] = [
   {
-    namn: "Bomull",
+    namn: "Cotton Eco",
     maxMangd: "8 kg",
-    beskrivning: "Program för bomullstextilier.",
-    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"]
+    beskrivning: "Bomull. Energieffektiv torkning till skåptorrt.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["bomull"],
+    egenskaper: ["energieffektiv", "skåptorrt"]
   },
   {
-    namn: "Syntet",
+    namn: "Cotton Extra Dry",
+    maxMangd: "8 kg",
+    beskrivning: "Bomull. Extra torrt resultat.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["bomull"],
+    egenskaper: ["extra torr"]
+  },
+  {
+    namn: "Cotton Cupboard Dry",
+    maxMangd: "8 kg",
+    beskrivning: "Bomull. Torrt för direkt förvaring i skåp.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["bomull"],
+    egenskaper: ["skåptorrt"]
+  },
+  {
+    namn: "Cotton Iron Dry",
+    maxMangd: "8 kg",
+    beskrivning: "Bomull. Lämpligt för strykning.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["bomull"],
+    egenskaper: ["stryktorrt"]
+  },
+  {
+    namn: "Synthetic Extra Dry",
     maxMangd: "3,5 kg",
-    beskrivning: "Program för syntetiska plagg.",
-    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"]
+    beskrivning: "Syntetiska plagg. Extra torrt.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["syntet"],
+    egenskaper: ["extra torr"]
   },
   {
-    namn: "Mix",
-    maxMangd: "3 kg",
-    beskrivning: "Program för blandade material.",
-    funktioner: ["torrhetsgrad", "fordrojdStart"]
+    namn: "Synthetic Cupboard Dry",
+    maxMangd: "3,5 kg",
+    beskrivning: "Syntetiska plagg. Skåptorrt.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["syntet"],
+    egenskaper: ["skåptorrt"]
   },
   {
-    namn: "Sängkläder",
-    maxMangd: "3 kg",
-    beskrivning: "För sänglinne och större textilier.",
-    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"]
+    namn: "Easy Iron",
+    maxMangd: "1 kg (5 skjortor)",
+    beskrivning: "Bomull och syntet. Minskar skrynklor, lätt att stryka.",
+    funktioner: ["fordrojdStart", "skrynkelskydd"],
+    material: ["bomull", "syntet"],
+    egenskaper: ["mindre skrynklor"]
   },
   {
-    namn: "Silke",
-    maxMangd: "1 kg",
-    beskrivning: "Skonsam torkning för siden.",
-    funktioner: ["fordrojdStart"]
+    namn: "Time Drying",
+    maxMangd: "5 kg",
+    beskrivning: "Alla material. Torkning med valbar tid.",
+    funktioner: ["tidtorkning", "fordrojdStart", "signal"],
+    material: ["alla"],
+    egenskaper: ["valbar tid"]
   },
   {
-    namn: "Ylle",
-    maxMangd: "1 kg",
-    beskrivning: "Skonsam torkning för ull.",
-    funktioner: ["fordrojdStart"]
+    namn: "Jeans",
+    maxMangd: "8 kg",
+    beskrivning: "Jeans och fritidskläder i tjockare material.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["denim", "bomull"],
+    egenskaper: ["tjocka plagg"]
   },
   {
-    namn: "Outdoor",
+    namn: "Sports",
     maxMangd: "2 kg",
-    beskrivning: "För funktionsplagg och utomhuskläder.",
-    funktioner: ["fordrojdStart"]
+    beskrivning: "Sportkläder i syntet, mikrofiber och polyester.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["syntet", "polyester", "mikrofiber"],
+    egenskaper: ["lätta plagg"]
   },
   {
-    namn: "Snabb 30 min",
+    namn: "Bedlinen",
+    maxMangd: "3 kg",
+    beskrivning: "Sängkläder som lakan och påslakan.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["bomull"],
+    egenskaper: ["stora plagg"]
+  },
+  {
+    namn: "Silk",
     maxMangd: "1 kg",
-    beskrivning: "Kort program för mindre mängd tvätt.",
-    funktioner: ["tidtorkning", "fordrojdStart"]
+    beskrivning: "Skonsam torkning av siden.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["siden"],
+    egenskaper: ["skonsam"]
   },
   {
-    namn: "Tidtorkning",
-    maxMangd: "4 kg",
-    beskrivning: "Torkning under vald tid.",
-    funktioner: ["tidtorkning", "fordrojdStart", "signal"]
+    namn: "Wool",
+    maxMangd: "1 kg",
+    beskrivning: "Skonsam torkning av ull.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["ull"],
+    egenskaper: ["skonsam"]
+  },
+  {
+    namn: "Mixed",
+    maxMangd: "3 kg",
+    beskrivning: "Bomulls- och syntetplagg. Låg temperatur, skonsam torkning.",
+    funktioner: ["torrhetsgrad", "fordrojdStart", "skrynkelskydd"],
+    material: ["bomull", "syntet"],
+    egenskaper: ["låg temperatur", "skonprogram"]
   }
 ];
 

@@ -26,17 +26,7 @@
       </span>
     </div>
 
-    <div class="mt-6 grid gap-3 sm:grid-cols-2">
-      <div class="rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/60">
-        <p
-          class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
-          Energiklass
-        </p>
-        <p class="mt-1 text-sm font-medium">
-          {{ machine.produkt.energiklass || "—" }}
-        </p>
-      </div>
-
+    <div class="mt-6">
       <div class="rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/60">
         <p
           class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">

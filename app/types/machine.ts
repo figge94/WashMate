@@ -15,6 +15,27 @@ export type Machine = {
   radOchTips?: RadTipsItem[];
 };
 
+export type MaterialKey =
+  | "bomull"
+  | "syntet"
+  | "denim"
+  | "polyester"
+  | "mikrofiber"
+  | "siden"
+  | "ull"
+  | "alla";
+
+export const materialLabels: Record<MaterialKey, string> = {
+  bomull: "Bomull",
+  syntet: "Syntet",
+  denim: "Denim",
+  polyester: "Polyester",
+  mikrofiber: "Mikrofiber",
+  siden: "Siden",
+  ull: "Ull",
+  alla: "Alla material"
+};
+
 export type Program = {
   namn: string;
   temperatur?: string;
@@ -23,6 +44,8 @@ export type Program = {
   beskrivning: string;
   funktioner: ProgramFunktionKey[];
   symboler?: string[];
+  material: MaterialKey[];
+  egenskaper?: string[];
 };
 
 export type ProgramFunktion = {
