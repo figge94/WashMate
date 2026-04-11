@@ -1,12 +1,6 @@
 <template>
-  <section
-    v-if="items.length || $slots.default"
-    class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-    <h2 class="text-lg font-semibold tracking-tight">
-      {{ title }}
-    </h2>
-
-    <div v-if="items.length" :class="gridClass" class="mt-6 grid gap-4">
+  <BaseCard v-if="items.length || $slots.default" :title="title">
+    <div v-if="items.length" :class="gridClass" class="grid gap-4">
       <div
         v-for="item in items"
         :key="item.key"
@@ -23,7 +17,7 @@
     </div>
 
     <slot />
-  </section>
+  </BaseCard>
 </template>
 
 <script setup lang="ts">

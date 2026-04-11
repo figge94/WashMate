@@ -1,5 +1,9 @@
 <template>
-  <ProductSpecsCard title="Prestanda" :items="specItems" :columns="2" />
+  <ProductSpecsCard
+    v-if="specItems.length"
+    title="Prestanda"
+    :items="specItems"
+    :columns="2" />
 </template>
 
 <script setup lang="ts">

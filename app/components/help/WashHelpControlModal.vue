@@ -11,18 +11,15 @@
             <div
               class="grid h-12 w-12 place-items-center rounded-xl bg-slate-100 dark:bg-slate-800">
               <img
-                v-if="
-                  symbols[selectedPanelItem.symbolKey] &&
-                  symbols[selectedPanelItem.symbolKey].startsWith('/')
-                "
-                :src="symbols[selectedPanelItem.symbolKey]"
+                v-if="symbolValue?.startsWith('/')"
+                :src="symbolValue"
                 :alt="selectedPanelItem.namn"
                 class="h-6 w-6 object-contain" />
 
               <div
-                v-else-if="symbols[selectedPanelItem.symbolKey]"
+                v-else-if="symbolValue"
                 class="h-6 w-6 text-slate-900 dark:text-slate-100"
-                v-html="symbols[selectedPanelItem.symbolKey]"></div>
+                v-html="symbolValue"></div>
             </div>
 
             <div>
@@ -38,9 +35,9 @@
 
           <button
             type="button"
-            @click="$emit('close')"
             class="rounded-xl p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
-            aria-label="Stäng">
+            aria-label="Stäng"
+            @click="$emit('close')">
             ✕
           </button>
         </div>
@@ -59,8 +56,8 @@
         <div class="mt-6 flex justify-end">
           <button
             type="button"
-            @click="$emit('close')"
-            class="rounded-2xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-300">
+            class="rounded-2xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-300"
+            @click="$emit('close')">
             Stäng
           </button>
         </div>
@@ -70,10 +67,11 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import type { Knapp } from "~/types/control-panel";
 import type { ControlSymbolKey } from "~/types/control-symbol";
 
-defineProps<{
+const props = defineProps<{
   selectedPanelItem: Knapp | null;
   symbols: Record<ControlSymbolKey, string>;
 }>();
@@ -81,6 +79,11 @@ defineProps<{
 defineEmits<{
   (e: "close"): void;
 }>();
+
+const symbolValue = computed(() => {
+  if (!props.selectedPanelItem) return "";
+  return props.symbols[props.selectedPanelItem.symbolKey] ?? "";
+});
 </script>
 
 <style scoped>

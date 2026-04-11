@@ -1,8 +1,6 @@
 <template>
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    <NuxtLink
-      :to="{ path: helpPath, query: { id: machineId } }"
-      class="group h-full rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+    <BaseCardLink :to="{ path: helpPath, query: { id: machineId } }">
       <div class="flex h-full items-start justify-between gap-3">
         <div>
           <p class="text-lg font-semibold">{{ helpTitle }}</p>
@@ -14,11 +12,9 @@
           →
         </span>
       </div>
-    </NuxtLink>
+    </BaseCardLink>
 
-    <NuxtLink
-      :to="{ path: '/program', query: { id: machineId } }"
-      class="group h-full rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+    <BaseCardLink :to="{ path: '/program', query: { id: machineId } }">
       <div class="flex h-full items-start justify-between gap-3">
         <div>
           <p class="text-lg font-semibold">Program</p>
@@ -30,11 +26,9 @@
           →
         </span>
       </div>
-    </NuxtLink>
+    </BaseCardLink>
 
-    <NuxtLink
-      :to="{ path: '/produktinformation', query: { id: machineId } }"
-      class="group h-full rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+    <BaseCardLink :to="{ path: '/produktinfo', query: { id: machineId } }">
       <div class="flex h-full items-start justify-between gap-3">
         <div>
           <p class="text-lg font-semibold">Produktinfo</p>
@@ -46,11 +40,9 @@
           →
         </span>
       </div>
-    </NuxtLink>
+    </BaseCardLink>
 
-    <NuxtLink
-      :to="{ path: '/felsokning', query: { id: machineId } }"
-      class="group h-full rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+    <BaseCardLink :to="{ path: '/felsokning', query: { id: machineId } }">
       <div class="flex h-full items-start justify-between gap-3">
         <div>
           <p class="text-lg font-semibold">Felsökning</p>
@@ -62,7 +54,7 @@
           →
         </span>
       </div>
-    </NuxtLink>
+    </BaseCardLink>
   </div>
 </template>
 
@@ -78,24 +70,10 @@ const props = defineProps<{
 const isDryer = computed(() => props.type === "dryer");
 
 const helpTitle = computed(() => (isDryer.value ? "Torkhjälp" : "Tvätthjälp"));
-
 const helpPath = computed(() => (isDryer.value ? "/torkhjalp" : "/tvatthjalp"));
 
-const helpDescription = computed(() =>
-  isDryer.value
-    ? "Hjälp att välja rätt program."
-    : "Hjälp att välja rätt program."
-);
-
-const programDescription = computed(
-  () => "Se program och viktiga inställningar."
-);
-
-const productInfoDescription = computed(
-  () => "Modell, kapacitet, mått och annan info."
-);
-
-const troubleshootingDescription = computed(
-  () => "Vanliga problem och enkla lösningar."
-);
+const helpDescription = "Hjälp att välja rätt program.";
+const programDescription = "Se program och viktiga inställningar.";
+const productInfoDescription = "Modell, kapacitet, mått och annan info.";
+const troubleshootingDescription = "Vanliga problem och enkla lösningar.";
 </script>

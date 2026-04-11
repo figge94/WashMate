@@ -1,11 +1,5 @@
 <template>
   <ProductSpecsCard title="Energidata" :items="specItems" :columns="3">
-    <p
-      v-if="energidata.kommentar"
-      class="mt-6 text-sm text-slate-600 dark:text-slate-300">
-      {{ energidata.kommentar }}
-    </p>
-
     <ProductEnergyPrograms
       v-if="energidata.standardprogram?.length"
       class="mt-8"
@@ -51,9 +45,7 @@ const items = computed(() => [
   spec(
     "ljudTvatt",
     isWasher.value ? "Ljud tvätt" : "Ljudnivå",
-    isWasher.value
-      ? props.energidata.ljudnivaTvattDb
-      : props.energidata.ljudnivaTvattDb,
+    props.energidata.ljudnivaTvattDb,
     "dB"
   ),
   spec(

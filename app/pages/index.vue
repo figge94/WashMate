@@ -2,23 +2,15 @@
   <main
     class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
     <section class="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
-      <div
-        class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-8">
-        <p
-          class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
-          Översikt
-        </p>
+      <BaseHero
+        label="Översikt"
+        title="Tvätt & maskinguide"
+        description="Här hittar du dina maskiner samt guider för tvätt och skötsel."
+        gradient="from-sky-50 to-white"
+        textColor="text-sky-600 dark:text-sky-400"
+        badgeColor="bg-sky-100 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300" />
 
-        <h1 class="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
-          Tvätt & maskinguide
-        </h1>
-
-        <p
-          class="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300 sm:text-base">
-          Här hittar du dina maskiner samt guider för tvätt och skötsel.
-        </p>
-      </div>
-
+      <!-- Maskiner -->
       <div class="mt-8">
         <div class="mb-4">
           <p
@@ -38,6 +30,7 @@
         </div>
       </div>
 
+      <!-- Guider -->
       <div class="mt-8">
         <div class="mb-4">
           <p
@@ -52,7 +45,7 @@
             to="/tvattsymboler"
             class="block rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
             <p
-              class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+              class="text-sm font-semibold uppercase tracking-[0.18em] text-sky-600 dark:text-sky-400">
               Guide
             </p>
 

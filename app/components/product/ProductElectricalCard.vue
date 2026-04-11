@@ -13,10 +13,10 @@ const props = defineProps<{
 }>();
 
 const items = computed(() => [
-  spec("spanning", "Spänning", props.el.spanningV, "V"),
-  spec("effekt", "Effekt", props.el.effektW, "W"),
-  spec("sakring", "Säkring", props.el.sakringA, "A"),
-  spec("frekvens", "Frekvens", props.el.frekvensHz, "Hz")
+  spec("volt", "Spänning", props.el.spanningV, "V"),
+  spec("watt", "Effekt", props.el.effektW, "W"),
+  spec("amp", "Säkring", props.el.sakringA, "A"),
+  spec("hz", "Frekvens", props.el.frekvensHz, "Hz")
 ]);
 
 const { specItems } = useSpecsBuilder(items);

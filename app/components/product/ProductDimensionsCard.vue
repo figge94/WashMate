@@ -16,7 +16,12 @@ const items = computed(() => [
   spec("bredd", "Bredd", props.dimensioner.breddCm, "cm"),
   spec("hojd", "Höjd", props.dimensioner.hojdCm, "cm"),
   spec("djup", "Djup", props.dimensioner.djupCm, "cm"),
-  spec("totalDjup", "Totalt djup", props.dimensioner.totalDjupCm, "cm")
+  spec(
+    "totalDjup",
+    "Totalt djup inkl. lucka",
+    props.dimensioner.totalDjupCm,
+    "cm"
+  )
 ]);
 
 const { specItems } = useSpecsBuilder(items);

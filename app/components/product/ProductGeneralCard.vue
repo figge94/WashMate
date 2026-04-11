@@ -16,7 +16,7 @@ const items = computed(() => [
   spec("marke", "Märke", props.produkt.marke),
   spec("modell", "Modell", props.produkt.modell),
   spec("pnc", "PNC", props.produkt.pnc),
-  spec("kapacitet", "Kapacitet", props.produkt.kapacitetKg, "kg")
+  spec("kapacitet", "Kapacitet (max)", props.produkt.kapacitetKg, "kg")
 ]);
 
 const { specItems } = useSpecsBuilder(items);

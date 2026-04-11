@@ -31,7 +31,7 @@ export const useNavigation = () => {
     },
     {
       label: "Produktinfo",
-      to: { path: "/produktinformation", query: { id: selectedId.value } }
+      to: { path: "/produktinfo", query: { id: selectedId.value } }
     },
     {
       label: "Felsökning",

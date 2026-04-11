@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <h3 class="text-base font-semibold">{{ title }}</h3>
+  <div v-if="rows.length">
+    <h3 class="text-lg font-semibold tracking-tight">
+      {{ title }}
+    </h3>
 
     <p
       v-if="kommentar"
@@ -8,7 +10,7 @@
       {{ kommentar }}
     </p>
 
-    <div v-if="rows.length" class="mt-4 grid gap-3 sm:hidden">
+    <div class="mt-4 grid gap-3 sm:hidden">
       <div
         v-for="item in rows"
         :key="item.key"
@@ -50,7 +52,6 @@
     </div>
 
     <div
-      v-if="rows.length"
       class="mt-4 hidden overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 sm:block">
       <div class="overflow-x-auto">
         <table class="min-w-full text-sm">

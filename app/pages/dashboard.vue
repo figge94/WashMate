@@ -2,22 +2,21 @@
   <main
     class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
     <section class="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-6">
+      <HomeMachineSwitcher />
 
-      <MachineSwitcher />
-
-      <HomeHero
+      <DashBoardHero
         v-if="machine"
         :produkt="machine.produkt"
         :machine-id="machine.id"
         :type="machine.type" />
 
-      <HomeQuickLinks
+      <DashBoardQuickLinks
         v-if="machine"
         class="mt-4"
         :machine-id="machine.id"
         :type="machine.type" />
 
-      <HomeCarePreview
+      <DashBoardCarePreview
         v-if="machine"
         class="mt-4"
         :skotsel="machine.skotsel"
@@ -30,6 +29,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useSelectedMachine } from "~/composables/useSelectedMachine";
+import HomeMachineSwitcher from "~/components/home/MachineSwitcher.vue";
 
 const { machine } = useSelectedMachine();
 

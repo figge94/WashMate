@@ -2,8 +2,16 @@
   <main
     class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
     <section class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
-      <MachineSwitcher />
-      <WashHelpHero v-if="machine" :machine-type="machine.type" />
+      <HomeMachineSwitcher />
+
+      <BaseHero
+        label="Maskinhjälp"
+        :title="heroTitle"
+        :description="heroDescription"
+        :badge="heroBadge"
+        gradient="from-blue-50 to-white"
+        textColor="text-blue-600 dark:text-blue-400"
+        badgeColor="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" />
 
       <WashHelpChoices
         class="mt-6"
@@ -25,9 +33,8 @@
         :symbols="symbols"
         @open="openItem" />
 
-      <!-- 👇 NY -->
       <div class="mt-6">
-        <TipsAccordion v-if="tipsData.length" class="mt-6" :items="tipsData" />
+        <TipsAccordion v-if="tipsData.length" :items="tipsData" />
       </div>
     </section>
 
@@ -44,6 +51,7 @@ import { useSelectedMachine } from "~/composables/useSelectedMachine";
 import { useControlPanel } from "~/composables/useControlPanel";
 import { useControlSymbols } from "~/composables/useControlSymbols";
 import { useMachineChoices } from "~/composables/useMachineChoices";
+import HomeMachineSwitcher from "~/components/home/MachineSwitcher.vue";
 import type { Knapp } from "~/types/control-panel";
 
 const { machine } = useSelectedMachine();
@@ -56,6 +64,20 @@ const { symbols } = useControlSymbols();
 
 const selected = ref("vardag");
 const selectedPanelItem = ref<Knapp | null>(null);
+
+const heroTitle = computed(() =>
+  machineType.value === "dryer" ? "Vad vill du torka?" : "Vad vill du tvätta?"
+);
+
+const heroDescription = computed(() =>
+  machineType.value === "dryer"
+    ? "Välj det som passar bäst så får du ett enkelt förslag för torkning."
+    : "Välj det som passar bäst så får du ett enkelt förslag för tvätt."
+);
+
+const heroBadge = computed(() =>
+  machineType.value === "dryer" ? "Torktumlare" : "Tvättmaskin"
+);
 
 function openItem(item: Knapp) {
   selectedPanelItem.value = item;

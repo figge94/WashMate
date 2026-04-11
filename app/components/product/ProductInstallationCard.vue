@@ -1,5 +1,9 @@
 <template>
-  <ProductSpecsCard title="Installation" :items="specItems" :columns="2" />
+  <ProductSpecsCard
+    v-if="specItems.length"
+    title="Installation"
+    :items="specItems"
+    :columns="2" />
 </template>
 
 <script setup lang="ts">
@@ -17,22 +21,31 @@ const props = defineProps<{
 const isWasher = computed(() => props.type === "washer");
 
 const items = computed(() => [
-  spec("vatten", "Vatten", props.vatten?.inlopp, undefined, isWasher.value),
+  spec(
+    "vatten",
+    "Vattenanslutning",
+    props.vatten?.inlopp,
+    undefined,
+    isWasher.value
+  ),
+
   spec(
     "minTryck",
-    "Minsta tryck",
+    "Min tryck",
     props.vatten?.minTryckBar,
     "bar",
     isWasher.value
   ),
+
   spec(
     "maxTryck",
-    "Högsta tryck",
+    "Max tryck",
     props.vatten?.maxTryckBar,
     "bar",
     isWasher.value
   ),
-  spec("ip", "IP-klass", props.kapslingsklass)
+
+  spec("ip", "Kapslingsklass (IP)", props.kapslingsklass)
 ]);
 
 const { specItems } = useSpecsBuilder(items);
