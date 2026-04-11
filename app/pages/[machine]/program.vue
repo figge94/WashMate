@@ -28,12 +28,13 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  name: "machine-program-list"
-});
 import { computed } from "vue";
 import { useSelectedMachine } from "~/composables/useSelectedMachine";
 import HomeMachineSwitcher from "~/components/home/MachineSwitcher.vue";
+
+definePageMeta({
+  name: "machine-program-list"
+});
 
 const { machine } = useSelectedMachine();
 

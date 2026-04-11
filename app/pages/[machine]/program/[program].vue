@@ -82,12 +82,13 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  name: "machine-program-detail"
-});
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { machines } from "~/data/machines/machines";
+
+definePageMeta({
+  name: "machine-program-detail"
+});
 
 const route = useRoute();
 

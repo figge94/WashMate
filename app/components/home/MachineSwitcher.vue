@@ -39,7 +39,15 @@ const selectedId = computed(() => {
 });
 
 const setId = (id: string) => {
-  router.push(`/${id}`);
+  const segments = route.path.split("/").filter(Boolean);
+
+  if (segments.length === 0) {
+    router.push(`/${id}`);
+    return;
+  }
+
+  segments[0] = id;
+  router.push("/" + segments.join("/"));
 };
 
 const getLabel = (machine: Machine) =>
