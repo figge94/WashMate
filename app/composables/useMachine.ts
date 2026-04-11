@@ -1,4 +1,4 @@
-import { machines } from "~/data/machines";
+import { machines } from "~/data/machines/machines";
 import type { ProgramFunktionKey } from "~/types/machine";
 
 export function useMachine() {

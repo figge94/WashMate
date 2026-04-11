@@ -37,6 +37,7 @@ export const materialLabels: Record<MaterialKey, string> = {
 };
 
 export type Program = {
+  id: string;
   namn: string;
   temperatur?: string;
   maxCentrifugering?: string;
@@ -44,7 +45,7 @@ export type Program = {
   beskrivning: string;
   funktioner: ProgramFunktionKey[];
   symboler?: string[];
-  material: MaterialKey[];
+  material?: MaterialKey[];
   egenskaper?: string[];
 };
 

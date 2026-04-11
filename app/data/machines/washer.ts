@@ -39,6 +39,7 @@ const programfunktioner: Partial<Record<ProgramFunktionKey, ProgramFunktion>> =
 
 const program: Program[] = [
   {
+    id: "cotton",
     namn: "Cotton",
     temperatur: "90 °C – kall",
     maxCentrifugering: "1200 varv/min",
@@ -55,6 +56,7 @@ const program: Program[] = [
     ]
   },
   {
+    id: "eco-40-60",
     namn: "Eco 40–60",
     temperatur: "40–60 °C",
     maxCentrifugering: "1200 varv/min",
@@ -72,6 +74,7 @@ const program: Program[] = [
     ]
   },
   {
+    id: "synthetics",
     namn: "Synthetics",
     temperatur: "60 °C – kall",
     maxCentrifugering: "1200 varv/min",
@@ -89,6 +92,7 @@ const program: Program[] = [
     ]
   },
   {
+    id: "delicates",
     namn: "Delicates",
     temperatur: "40 °C – kall",
     maxCentrifugering: "1200 varv/min",
@@ -104,6 +108,7 @@ const program: Program[] = [
     ]
   },
   {
+    id: "express-care",
     namn: "Express Care",
     temperatur: "60 °C – kall",
     maxCentrifugering: "1200 varv/min",
@@ -121,6 +126,7 @@ const program: Program[] = [
     ]
   },
   {
+    id: "rapid-30",
     namn: "Rapid 30 min",
     temperatur: "40 °C",
     maxCentrifugering: "1200 varv/min",
@@ -129,6 +135,7 @@ const program: Program[] = [
     funktioner: ["centrifugering", "fordrojdStart"]
   },
   {
+    id: "rapid-14",
     namn: "Rapid 14 min",
     temperatur: "30 °C",
     maxCentrifugering: "800 varv/min",
@@ -138,6 +145,7 @@ const program: Program[] = [
     funktioner: ["centrifugering", "fortvatt", "fordrojdStart"]
   },
   {
+    id: "spin",
     namn: "Spin",
     temperatur: "-",
     maxCentrifugering: "1200 varv/min",
@@ -147,6 +155,7 @@ const program: Program[] = [
     funktioner: ["centrifugering", "fordrojdStart"]
   },
   {
+    id: "drain",
     namn: "Drain",
     temperatur: "-",
     maxCentrifugering: "-",
@@ -155,6 +164,7 @@ const program: Program[] = [
     funktioner: ["fordrojdStart"]
   },
   {
+    id: "rinse",
     namn: "Rinse",
     temperatur: "-",
     maxCentrifugering: "1200 varv/min",
@@ -164,6 +174,7 @@ const program: Program[] = [
     funktioner: ["centrifugering", "fortvatt", "fordrojdStart", "softPlus"]
   },
   {
+    id: "anti-allergy",
     namn: "Anti-allergy",
     temperatur: "60 °C",
     maxCentrifugering: "1200 varv/min",
@@ -179,6 +190,7 @@ const program: Program[] = [
     ]
   },
   {
+    id: "duvet",
     namn: "Duvet",
     temperatur: "60 °C – kall",
     maxCentrifugering: "800 varv/min",
@@ -187,6 +199,7 @@ const program: Program[] = [
     funktioner: ["centrifugering", "fordrojdStart"]
   },
   {
+    id: "sports",
     namn: "Sports",
     temperatur: "40 °C – kall",
     maxCentrifugering: "1200 varv/min",
@@ -202,6 +215,7 @@ const program: Program[] = [
     ]
   },
   {
+    id: "wool-silk",
     namn: "Wool/Silk",
     temperatur: "40 °C – kall",
     maxCentrifugering: "1200 varv/min",
@@ -219,7 +233,7 @@ const program: Program[] = [
 ];
 
 export const washer: Machine = {
-  id: "washer-electrolux-ew2f2027r1",
+  id: "tvattmaskin",
   type: "washer",
   manualUrl:
     "https://api.electrolux-medialibrary.com/asset/08d47a73-e6f4-42da-a89b-4c6747445aad/E4RM3Q/0605c4e2-eab3-4022-a52a-73da6f646764/PDF/0605c4e2-eab3-4022-a52a-73da6f646764.pdf",

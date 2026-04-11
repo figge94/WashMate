@@ -2,7 +2,8 @@
   <BaseCard
     :title="program.namn"
     :description="program.beskrivning"
-    :clickable="true">
+    :clickable="true"
+    @click="openProgram">
     <ProgramMetaChips :program="program" :machine-type="machineType" />
 
     <ProgramFunctionChips
@@ -14,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import type {
   MachineType,
   Program,
@@ -21,9 +23,16 @@ import type {
   ProgramFunktionKey
 } from "~/types/machine";
 
-defineProps<{
+const props = defineProps<{
   program: Program;
   machineType: MachineType;
+  machineId: string;
   programfunktioner: Partial<Record<ProgramFunktionKey, ProgramFunktion>>;
 }>();
+
+const router = useRouter();
+
+const openProgram = () => {
+  router.push(`/${props.machineId}/program/${props.program.id}`);
+};
 </script>

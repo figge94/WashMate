@@ -50,7 +50,10 @@ const heroBadge = computed(() =>
 );
 
 useHead({
-  title: "Skötsel | WashMate",
+  title: computed(
+    () =>
+      `${machineType.value === "dryer" ? "Skötsel torktumlare" : "Skötsel tvättmaskin"} | WashMate`
+  ),
   meta: [
     {
       name: "description",

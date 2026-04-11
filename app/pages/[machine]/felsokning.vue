@@ -48,7 +48,10 @@ const heroBadge = computed(() =>
 );
 
 useHead({
-  title: "Felsökning | WashMate",
+  title: computed(
+    () =>
+      `${machineType.value === "dryer" ? "Felsökning torktumlare" : "Felsökning tvättmaskin"} | WashMate`
+  ),
   meta: [
     {
       name: "description",

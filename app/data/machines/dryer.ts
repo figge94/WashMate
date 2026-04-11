@@ -32,6 +32,7 @@ const programfunktioner: Partial<Record<ProgramFunktionKey, ProgramFunktion>> =
 
 const program: Program[] = [
   {
+    id: "cotton-eco",
     namn: "Cotton Eco",
     maxMangd: "8 kg",
     beskrivning: "Bomull. Energieffektiv torkning till skåptorrt.",
@@ -40,6 +41,7 @@ const program: Program[] = [
     egenskaper: ["energieffektiv", "skåptorrt"]
   },
   {
+    id: "cotton-extra-dry",
     namn: "Cotton Extra Dry",
     maxMangd: "8 kg",
     beskrivning: "Bomull. Extra torrt resultat.",
@@ -48,6 +50,7 @@ const program: Program[] = [
     egenskaper: ["extra torr"]
   },
   {
+    id: "cotton-cupboard-dry",
     namn: "Cotton Cupboard Dry",
     maxMangd: "8 kg",
     beskrivning: "Bomull. Torrt för direkt förvaring i skåp.",
@@ -56,6 +59,7 @@ const program: Program[] = [
     egenskaper: ["skåptorrt"]
   },
   {
+    id: "cotton-iron-dry",
     namn: "Cotton Iron Dry",
     maxMangd: "8 kg",
     beskrivning: "Bomull. Lämpligt för strykning.",
@@ -64,6 +68,7 @@ const program: Program[] = [
     egenskaper: ["stryktorrt"]
   },
   {
+    id: "synthetic-extra-dry",
     namn: "Synthetic Extra Dry",
     maxMangd: "3,5 kg",
     beskrivning: "Syntetiska plagg. Extra torrt.",
@@ -72,6 +77,7 @@ const program: Program[] = [
     egenskaper: ["extra torr"]
   },
   {
+    id: "synthetic-cupboard-dry",
     namn: "Synthetic Cupboard Dry",
     maxMangd: "3,5 kg",
     beskrivning: "Syntetiska plagg. Skåptorrt.",
@@ -80,6 +86,7 @@ const program: Program[] = [
     egenskaper: ["skåptorrt"]
   },
   {
+    id: "easy-iron",
     namn: "Easy Iron",
     maxMangd: "1 kg (5 skjortor)",
     beskrivning: "Bomull och syntet. Minskar skrynklor, lätt att stryka.",
@@ -88,6 +95,7 @@ const program: Program[] = [
     egenskaper: ["mindre skrynklor"]
   },
   {
+    id: "time-drying",
     namn: "Time Drying",
     maxMangd: "5 kg",
     beskrivning: "Alla material. Torkning med valbar tid.",
@@ -96,6 +104,7 @@ const program: Program[] = [
     egenskaper: ["valbar tid"]
   },
   {
+    id: "jeans",
     namn: "Jeans",
     maxMangd: "8 kg",
     beskrivning: "Jeans och fritidskläder i tjockare material.",
@@ -104,6 +113,7 @@ const program: Program[] = [
     egenskaper: ["tjocka plagg"]
   },
   {
+    id: "sports",
     namn: "Sports",
     maxMangd: "2 kg",
     beskrivning: "Sportkläder i syntet, mikrofiber och polyester.",
@@ -112,6 +122,7 @@ const program: Program[] = [
     egenskaper: ["lätta plagg"]
   },
   {
+    id: "bedlinen",
     namn: "Bedlinen",
     maxMangd: "3 kg",
     beskrivning: "Sängkläder som lakan och påslakan.",
@@ -120,6 +131,7 @@ const program: Program[] = [
     egenskaper: ["stora plagg"]
   },
   {
+    id: "silk",
     namn: "Silk",
     maxMangd: "1 kg",
     beskrivning: "Skonsam torkning av siden.",
@@ -128,6 +140,7 @@ const program: Program[] = [
     egenskaper: ["skonsam"]
   },
   {
+    id: "wool",
     namn: "Wool",
     maxMangd: "1 kg",
     beskrivning: "Skonsam torkning av ull.",
@@ -136,6 +149,7 @@ const program: Program[] = [
     egenskaper: ["skonsam"]
   },
   {
+    id: "mixed",
     namn: "Mixed",
     maxMangd: "3 kg",
     beskrivning: "Bomulls- och syntetplagg. Låg temperatur, skonsam torkning.",
@@ -205,7 +219,7 @@ const torkdata: TorkProgramData[] = [
 ];
 
 export const dryer: Machine = {
-  id: "dryer-electrolux-916098576",
+  id: "torktumlare",
   type: "dryer",
   manualUrl:
     "https://static.elongroup.se/Document/Article/226773/manual-torktumlare-electrolux-916098576.pdf",

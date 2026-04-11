@@ -1,6 +1,6 @@
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-import { machines } from "~/data/machines";
+import { machines } from "~/data/machines/machines";
 
 export const useNavigation = () => {
   const route = useRoute();
@@ -8,34 +8,34 @@ export const useNavigation = () => {
   const fallbackId = machines[0]?.id ?? "";
 
   const selectedId = computed(() => {
-    const id = route.query.id;
+    const id = route.params.machine;
     return typeof id === "string" ? id : fallbackId;
   });
 
   const links = computed(() => [
     {
       label: "Hem",
-      to: { path: "/", query: { id: selectedId.value } }
+      to: "/"
     },
     {
       label: "Tvätthjälp",
-      to: { path: "/tvatthjalp", query: { id: selectedId.value } }
+      to: `/${selectedId.value}`
     },
     {
       label: "Program",
-      to: { path: "/program", query: { id: selectedId.value } }
+      to: `/${selectedId.value}/program`
     },
     {
       label: "Skötsel",
-      to: { path: "/skotsel", query: { id: selectedId.value } }
+      to: `/${selectedId.value}/skotsel`
     },
     {
       label: "Produktinfo",
-      to: { path: "/produktinfo", query: { id: selectedId.value } }
+      to: `/${selectedId.value}/produktinfo`
     },
     {
       label: "Felsökning",
-      to: { path: "/felsokning", query: { id: selectedId.value } }
+      to: `/${selectedId.value}/felsokning`
     }
   ]);
 

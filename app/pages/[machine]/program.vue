@@ -17,8 +17,9 @@
       <div v-if="machine" class="mt-6 grid gap-4 lg:grid-cols-2">
         <ProgramCard
           v-for="item in machine.program"
-          :key="item.namn"
+          :key="item.id"
           :program="item"
+          :machine-id="machine.id"
           :machine-type="machine.type"
           :programfunktioner="machine.programfunktioner" />
       </div>
@@ -27,6 +28,9 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  name: "machine-program-list"
+});
 import { computed } from "vue";
 import { useSelectedMachine } from "~/composables/useSelectedMachine";
 import HomeMachineSwitcher from "~/components/home/MachineSwitcher.vue";
@@ -50,7 +54,10 @@ const heroBadge = computed(() =>
 );
 
 useHead({
-  title: "Program | WashMate",
+  title: computed(
+    () =>
+      `${machineType.value === "dryer" ? "Torkprogram" : "Tvättprogram"} | WashMate`
+  ),
   meta: [
     {
       name: "description",

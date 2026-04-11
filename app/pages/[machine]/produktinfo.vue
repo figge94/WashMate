@@ -81,11 +81,14 @@ const heroBadge = computed(() =>
 );
 
 useHead({
-  title: "Produktinformation | WashMate",
+  title: computed(() => "Produktinformation | WashMate"),
   meta: [
     {
       name: "description",
-      content: `Mått, kapacitet och teknisk information om ${machineLabel.value}.`
+      content: computed(
+        () =>
+          `Mått, kapacitet och teknisk information om ${machineLabel.value}.`
+      )
     }
   ]
 });

@@ -114,7 +114,9 @@ watch(
 );
 
 useHead({
-  title: "Maskinhjälp | WashMate",
+  title: computed(
+    () => `${machine.value?.produkt.namn ?? "Maskinhjälp"} | WashMate`
+  ),
   meta: [
     {
       name: "description",

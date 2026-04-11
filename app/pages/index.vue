@@ -25,7 +25,7 @@
         <div class="grid gap-4 md:grid-cols-2">
           <MachineCard
             v-for="machine in machines"
-            :key="machine.type"
+            :key="machine.id"
             :machine="machine" />
         </div>
       </div>
@@ -70,7 +70,7 @@
 </template>
 
 <script setup lang="ts">
-import { machines } from "~/data/machines";
+import { machines } from "~/data/machines/machines";
 
 useHead({
   title: "WashMate",

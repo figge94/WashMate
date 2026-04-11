@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { machines } from "~/data/machines";
+import { machines } from "~/data/machines/machines";
 import type { Machine } from "~/types/machine";
 
 const route = useRoute();
@@ -34,17 +34,12 @@ const router = useRouter();
 const fallbackId = machines[0]?.id ?? "";
 
 const selectedId = computed(() => {
-  const id = route.query.id;
+  const id = route.params.machine;
   return typeof id === "string" ? id : fallbackId;
 });
 
 const setId = (id: string) => {
-  router.push({
-    query: {
-      ...route.query,
-      id
-    }
-  });
+  router.push(`/${id}`);
 };
 
 const getLabel = (machine: Machine) =>

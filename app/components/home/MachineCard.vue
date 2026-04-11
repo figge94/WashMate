@@ -61,8 +61,5 @@ const typeLabel = computed(() =>
   props.machine.type === "washer" ? "Tvättmaskin" : "Torktumlare"
 );
 
-const href = computed(() => ({
-  path: "/dashboard",
-  query: { id: props.machine.id }
-}));
+const href = computed(() => `/${props.machine.id}`);
 </script>

@@ -34,12 +34,14 @@
 </template>
 
 <script setup lang="ts">
+import type { RouteLocationRaw } from "vue-router";
+
 defineProps<{
   open: boolean;
   isDark: boolean;
   links: readonly {
-    to: { path: string; query?: Record<string, string> };
     label: string;
+    to: RouteLocationRaw;
   }[];
 }>();
 
